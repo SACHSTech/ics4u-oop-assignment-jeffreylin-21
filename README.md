@@ -3,7 +3,8 @@
 
 [*see instructions for details*](Instructions.md)
 
-*Insert Class Diagram here*  
+<img src="https://github.com/SACHSTech/ics4u-oop-assignment-jeffreylin-21/blob/main/Class%20Diagram.png">
+
 
 ## Summary
 *Include a brief summary that describes your system that your are modelling*
