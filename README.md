@@ -3,7 +3,7 @@
 
 [*see instructions for details*](Instructions.md)
 
-<img src="https://github.com/SACHSTech/ics4u-oop-assignment-jeffreylin-21/blob/main/Class%20Diagram.png">
+<img src="https://github.com/SACHSTech/ics4u-oop-assignment-jeffreylin-21/blob/main/src/Class%20Diagram.png">
 
 
 ## Summary
