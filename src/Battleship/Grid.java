@@ -1,4 +1,4 @@
-import java.util.*;
+package Battleship;
 
 public class Grid {
 	
@@ -13,7 +13,7 @@ public class Grid {
     this.intSize = intSize;
     this.intShipNum = intShipNum;
     grid = new Ship[this.intSize][this.intSize];
-    
+
   }
 
 
