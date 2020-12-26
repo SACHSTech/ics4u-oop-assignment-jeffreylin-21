@@ -9,8 +9,7 @@ public class Battlecruiser extends Ship{
 	
 	public Battlecruiser (String strType, int intHealth, int intLength, Ammo ammoType) {
 
-		super(shipType, intHealth);
-		this.ammoQuantity = ammoQuantity;
+		super(strType, intHealth);
     this.intLength = intLength;
 		this.isJammed = false;
     this.intPlanesShot = 0;

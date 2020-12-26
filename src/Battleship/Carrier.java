@@ -9,7 +9,7 @@ public class Carrier extends Ship{
 	
 	public Carrier (String strType, int intHealth, int intNumPlanes, int intWidth, Plane planeType) {
     
-    super(shipType, intHealth);
+    super(strType, intHealth);
 		this.planeType = planeType;
     this.intWidth = intWidth;
 		this.intNumPlanes = intNumPlanes;
