@@ -2,15 +2,15 @@ package Battleship;
 
 public class Ammo {
 	
-	private String strName;
-	private int intSpread;
-  private int intQuantity;
+	private String strAmmoName;
+	private int intGunSpread;
+  private int intAmmoQuantity;
 	private boolean isExplosive;
 	
-	public Gun (String strName, int intSpread, int intQuantity, boolean isExplosive) {
-		this.strName = strName;
-		this.intSpread = intSpread;
-    this.intQuantity = intQuantity;
+	public Ammo (String strAmmoName, int intGunSpread, int intAmmoQuantity, boolean isExplosive) {
+		this.strAmmoName = strAmmoName;
+		this.intGunSpread = intGunSpread;
+    this.intAmmoQuantity = intAmmoQuantity;
 		this.isExplosive = isExplosive;
 	}
 	
