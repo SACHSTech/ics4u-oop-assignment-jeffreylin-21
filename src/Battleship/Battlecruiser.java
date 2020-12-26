@@ -48,6 +48,7 @@ public class Battlecruiser extends Ship{
 
   public void shootGun(Grid board, int intX, int intY){
       Ship destroyed = new Ship("Destoyed", 0, true);
+      Ship empty = new Ship("Empty", 0, true);
       if(!this.getStatus() && this.getAmmo().getQuantity() != 0){
 
         this.getAmmo().setAmmo();
@@ -58,6 +59,7 @@ public class Battlecruiser extends Ship{
           
           if(board.getLocation(intX, intY) != null){
             System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+            board.getLocation(intX, intY).setHealth();
             board.setGrid(intX, intY, destroyed);
             if(this.getAmmo().getExplosive()){
               board.getLocation(intX, intY).setFire();
@@ -66,33 +68,52 @@ public class Battlecruiser extends Ship{
                 if(intX+intCount < board.getSize()){
                   if(board.getLocation(intX+intCount, intY) != null){
                     System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.getLocation(intX+intCount, intY).setHealth();
                     board.setGrid(intX, intY, destroyed);
+                  }else{
+                    board.setGrid(intX+intCount, intY, empty);
+                    System.out.println("Shot missed!");
                   }
                 }if(intX-intCount > 0){
                   if(board.getLocation(intX-intCount, intY) != null){
                     System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.getLocation(intX-intCount, intY).setHealth();
                     board.setGrid(intX, intY, destroyed);
+                  }else{
+                    board.setGrid(intX-intCount, intY, empty);
+                    System.out.println("Shot missed!");
                   }
                 }if(intY+intCount < board.getSize()){
                   if(board.getLocation(intX, intY+intCount) != null){
                     System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.getLocation(intX, intY+intCount).setHealth();
                     board.setGrid(intX, intY, destroyed);
+                  }else{
+                    board.setGrid(intX, intY+intCount, empty);
+                    System.out.println("Shot missed!");
                   }
                 }if(intY-intCount > 0){
                   if(board.getLocation(intX, intY-intCount) != null){
                     System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.getLocation(intX, intY-intCount).setHealth();
                     board.setGrid(intX, intY, destroyed);
+                  }else{
+                    board.setGrid(intX, intY-intCount, empty);
+                    System.out.println("Shot missed!");
                   }
                 }
                
               }
             }
+          }else{
+            board.setGrid(intX, intY, empty);
+            System.out.println("Shot missed!");
           }
           
         }
-     }else{
-       System.out.println("Gun jammed!");
-     }
-     this.setStatus();
+      }else{
+        System.out.println("Gun jammed!");
+      }
+      this.setStatus();
   }
 }
