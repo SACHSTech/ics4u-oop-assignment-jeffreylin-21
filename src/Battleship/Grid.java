@@ -17,7 +17,7 @@ public class Grid {
   }
 
   public int getPlayerNum() {
-    return this.getPlayerNum;
+    return this.intPlayerNum;
   }
 
   public int getShipNum() {

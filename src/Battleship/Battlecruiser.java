@@ -5,24 +5,27 @@ public class Battlecruiser extends Ship{
 	private Ammo ammoType;
 	private boolean isJammed;
 	private int intLength;
-  private int intPlanesShot;
+  private static int intPlanesShot = 0;
 	
-	public Battlecruiser (String strType, int intHealth, int intLength, Ammo ammoType) {
+	public Battlecruiser (String strType, int intLength, boolean isDestroyed, Ammo ammoType) {
 
-		super(strType, intHealth);
+		super(strType, intLength, isDestroyed);
     this.intLength = intLength;
 		this.isJammed = false;
-    this.intPlaneShot = 0;
 		this.ammoType = ammoType;
 
 	}
 	
-  public void setPlaneShot(){
-    this.intPlanesShot++;
+  public int getLength(){
+    return this.intLength;
+  }
+  
+  public static void setPlaneShot(){
+    intPlanesShot++;
   }
 
-  public int getPlaneShot(){
-    return this.intPlanesShot;
+  public static int getPlaneShot(){
+    return intPlanesShot;
   }
 
   public void setStatus(){

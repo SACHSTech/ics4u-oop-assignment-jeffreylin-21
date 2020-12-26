@@ -13,5 +13,7 @@ public class Plane {
     this.isScout = isScout;
 		this.isAlive = true;
 	}
+
+  
 	
 }

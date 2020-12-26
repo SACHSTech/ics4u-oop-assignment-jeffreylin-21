@@ -11,13 +11,13 @@ public class Ship {
 
 		this.strType = strType;
 		this.intHealth = intHealth;
-    this.intShipsSunk = 0;
+    this.intShipSunk = 0;
 		this.isDestroyed = isDestroyed;
 
 	}
 
   public String getType(){
-    return this.getType;
+    return this.strType;
   }
 
   public int getHealth() {
