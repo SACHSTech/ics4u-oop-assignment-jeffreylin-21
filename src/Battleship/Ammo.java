@@ -22,11 +22,11 @@ public class Ammo {
     return this.isExplosive;
   }
 
-  public String getAmmoTpye(){
+  public String getAmmoType(){
     return this.strAmmoName;
   }
 
-  public int getAmmo(){
+  public int getQuantity(){
     return this.intAmmoQuantity;
   }
 

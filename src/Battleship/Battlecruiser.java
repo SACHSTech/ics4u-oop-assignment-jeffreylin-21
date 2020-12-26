@@ -41,4 +41,16 @@ public class Battlecruiser extends Ship{
   public boolean getStatus(){
     return this.isJammed;
   }
+
+  public Ammo getAmmo(){
+    return this.ammoType;
+  }
+
+  public void shootGun(int intX, int intY){
+     if(!this.getStatus && this.getAmmo().getQuantity != 0){
+       this.getAmmo().setAmmo();
+       System.out.println("Shot gun!")
+     }
+     this.setStatus();
+  }
 }

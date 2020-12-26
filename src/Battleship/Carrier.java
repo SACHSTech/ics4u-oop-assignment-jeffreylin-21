@@ -9,7 +9,7 @@ public class Carrier extends Ship{
 	
 	public Carrier (String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
     
-    super(strType, intWidth*3, isDestroyed);
+    super(strType, 2, isDestroyed);
 		this.planeType = planeType;
     this.intWidth = intWidth;
 		this.intNumPlanes = intNumPlanes;
@@ -40,6 +40,14 @@ public class Carrier extends Ship{
       return true;
     }
     return false;
+  }
+
+  public void launchPlane(){
+    if(this.canLaunch()){
+      System.out.println("Plane launched");
+    }else{
+      System.out.println("No available planes!");
+    }
   }
 		
 }
