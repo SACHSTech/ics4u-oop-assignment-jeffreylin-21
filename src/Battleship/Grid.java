@@ -16,5 +16,24 @@ public class Grid {
 
   }
 
+  public int getPlayerNum() {
+    return this.getPlayerNum;
+  }
+
+  public int getShipNum() {
+    return this.intShipNum;
+  }
+
+  public void setShipNum(int intShipNum) {
+    this.intShipNum = intShipNum;
+  }
+
+  public Ship[][] getGrid() {
+    return this.grid;
+  }
+
+  public void setGrid(int intX, int intY, Ship ship) {
+    this.grid[intX][intY] = ship;
+  }
 
 }
