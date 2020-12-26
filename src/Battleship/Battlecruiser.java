@@ -47,8 +47,8 @@ public class Battlecruiser extends Ship{
   }
 
   public void shootGun(Grid board, int intX, int intY){
-
-     if(!this.getStatus && this.getAmmo().getQuantity != 0){
+      Ship destroyed = new Ship("Destoyed", 0, true);
+      if(!this.getStatus() && this.getAmmo().getQuantity() != 0){
 
         this.getAmmo().setAmmo();
 
@@ -58,11 +58,38 @@ public class Battlecruiser extends Ship{
           
           if(board.getLocation(intX, intY) != null){
             System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+            board.setGrid(intX, intY, destroyed);
+            if(this.getAmmo().getExplosive()){
+              board.getLocation(intX, intY).setFire();
+            }else if(this.getAmmo().getAmmoType().equals("mortar")){
+              for(int intCount = 0; intCount < this.getAmmo().getGunSpread(); intCount++){
+                if(intX+intCount < board.getSize()){
+                  if(board.getLocation(intX+intCount, intY) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.setGrid(intX, intY, destroyed);
+                  }
+                }if(intX-intCount > 0){
+                  if(board.getLocation(intX-intCount, intY) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.setGrid(intX, intY, destroyed);
+                  }
+                }if(intY+intCount < board.getSize()){
+                  if(board.getLocation(intX, intY+intCount) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.setGrid(intX, intY, destroyed);
+                  }
+                }if(intY-intCount > 0){
+                  if(board.getLocation(intX, intY-intCount) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+                    board.setGrid(intX, intY, destroyed);
+                  }
+                }
+               
+              }
+            }
           }
           
         }
-
-        System.out.println("Shot gun!");
      }else{
        System.out.println("Gun jammed!");
      }

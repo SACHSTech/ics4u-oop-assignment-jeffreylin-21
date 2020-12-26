@@ -6,6 +6,7 @@ public class Ship {
 	private int intShipSunk;
 	private int intHealth;
 	private boolean isDestroyed;	
+  private boolean isOnFire;
 	
 	public Ship (String strType, int intHealth, boolean isDestroyed) {
 
@@ -13,6 +14,7 @@ public class Ship {
 		this.intHealth = intHealth;
     this.intShipSunk = 0;
 		this.isDestroyed = isDestroyed;
+    this.isOnFire = false;
 
 	}
 
@@ -39,4 +41,11 @@ public class Ship {
     return this.isDestroyed;
   }
 
+  public boolean isRevealed(){
+    return this.isOnFire;
+  }
+
+  public void setFire(){
+    this.isOnFire = true;
+  }
 }
