@@ -13,5 +13,25 @@ public class Ammo {
     this.intAmmoQuantity = intAmmoQuantity;
 		this.isExplosive = isExplosive;
 	}
+	  
+  public int getGunSpread(){
+    return this.intGunSpread;
+  }
 	
+  public boolean getExplosive(){
+    return this.isExplosive;
+  }
+
+  public String getAmmoTpye(){
+    return this.strAmmoName;
+  }
+
+  public int getAmmo(){
+    return this.intAmmoQuantity;
+  }
+
+  public void setAmmo(){
+    this.intAmmoQuantity--;
+  }
+
 }
