@@ -42,7 +42,7 @@ public class Carrier extends Ship{
     return false;
   }
 
-  public void launchPlane(){
+  public void launchPlane(Grid board, int intX, int intY){
     if(this.canLaunch()){
       System.out.println("Plane launched");
     }else{

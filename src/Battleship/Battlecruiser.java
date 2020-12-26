@@ -46,10 +46,25 @@ public class Battlecruiser extends Ship{
     return this.ammoType;
   }
 
-  public void shootGun(int intX, int intY){
+  public void shootGun(Grid board, int intX, int intY){
+
      if(!this.getStatus && this.getAmmo().getQuantity != 0){
-       this.getAmmo().setAmmo();
-       System.out.println("Shot gun!")
+
+        this.getAmmo().setAmmo();
+
+        if(intX >= board.getSize() || intY >= board.getSize() || intX < 0 || intY < 0){
+          System.out.println("Shot missed!");
+        }else{
+          
+          if(board.getLocation(intX, intY) != null){
+            System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
+          }
+          
+        }
+
+        System.out.println("Shot gun!");
+     }else{
+       System.out.println("Gun jammed!");
      }
      this.setStatus();
   }

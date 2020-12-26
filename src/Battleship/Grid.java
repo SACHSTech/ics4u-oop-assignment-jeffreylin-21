@@ -20,6 +20,10 @@ public class Grid {
     return this.intPlayerNum;
   }
 
+  public int getSize(){
+    return this.intSize;
+  }
+
   public int getShipNum() {
     return this.intShipNum;
   }
@@ -28,8 +32,8 @@ public class Grid {
     this.intShipNum = intShipNum;
   }
 
-  public Ship[][] getGrid() {
-    return this.grid;
+  public Ship getLocation(int intX, int intY) {
+    return this.grid[intX][intY];
   }
 
   public void setGrid(int intX, int intY, Ship ship) {
