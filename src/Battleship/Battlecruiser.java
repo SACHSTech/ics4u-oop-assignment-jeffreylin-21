@@ -12,9 +12,30 @@ public class Battlecruiser extends Ship{
 		super(strType, intHealth);
     this.intLength = intLength;
 		this.isJammed = false;
-    this.intPlanesShot = 0;
+    this.intPlaneShot = 0;
 		this.ammoType = ammoType;
 
 	}
-		
+	
+  public void setPlaneShot(){
+    this.intPlanesShot++;
+  }
+
+  public int getPlaneShot(){
+    return this.intPlanesShot;
+  }
+
+  public void setStatus(){
+    int intRand = (int)(Math.random()*5)+1;
+    if(intRand == 1){
+      isJammed = true;
+    }
+    else {
+      isJammed = false;
+    }
+  }
+
+  public boolean getStatus(){
+    return this.isJammed;
+  }
 }
