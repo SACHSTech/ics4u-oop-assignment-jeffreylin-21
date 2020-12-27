@@ -14,7 +14,7 @@ static BufferedReader keyboard;
     System.out.println("                                        | |");
     System.out.println("                                        |_|");
     System.out.println("Welcone to Battleship");
-    System.out.println("Enter 1 to watch a computer simualted game or 2 to fight a computer");
+    System.out.println("Enter 1 to watch a computer simualated game or 2 to fight a computer");
   }
 
   public static int readInt() throws IOException{
@@ -22,7 +22,7 @@ static BufferedReader keyboard;
   }
 
   public static int random(int intRange, int intStart){
-    return (int)(Math.random()*intRange+1);
+    return (int)(Math.random()*intRange+intStart);
   }
 
   public static void randomBoard(Grid board){
@@ -33,16 +33,16 @@ static BufferedReader keyboard;
     int intCarriers;
     int intCruisers;
 
-    intCarriers = random(board.getShipNum(), 1);
+    intCarriers = random(board.getShipNum(), 0);
     intCruisers = board.getShipNum()-intCarriers;
 
     while(intCarriers > 0){
       intCarriers--;
-      randSize = random(2, 1);
+      randSize = random(3, 1);
       randX = random(board.getSize()-randSize, 0);
-      randY = random(board.getSize()-3, 0);
+      randY = random(board.getSize()-2, 0);
       for(int intCount2 = randX; intCount2 < randX + randSize; intCount2++){
-        for(int intCount = randY; intCount < randY+3; intCount++){
+        for(int intCount = randY; intCount < randY+2; intCount++){
           if(board.getLocation(intCount2, intCount) != null){
             intCount = 100;
             intCount2 = 100;
@@ -52,16 +52,16 @@ static BufferedReader keyboard;
         if(intCount2 == randX + randSize - 1 && intCount2 != 100){
           randWeapon = random(2, 1);
           if(randWeapon == 1){
-            Carrier temp = new Carrier("Carrier", randSize+1, randSize, false, new Plane("fighter", random(2, 0), false));
+            Carrier temp = new Carrier("C", randSize+1, randSize, false, new Plane("fighter", random(2, 0), false));
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){
-              for(int intCount4 = randY; intCount4 < randY+3; intCount4++){
+              for(int intCount4 = randY; intCount4 < randY+2; intCount4++){
                 board.setGrid(intCount3, intCount4, temp);
               }
             }            
           }else{
-            Carrier temp = new Carrier("Carrier", randSize+1, randSize, false, new Plane("scout", 0, true));
+            Carrier temp = new Carrier("C", randSize+1, randSize, false, new Plane("scout", 0, true));
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){
-              for(int intCount4 = randY; intCount4 < randY+3; intCount4++){
+              for(int intCount4 = randY; intCount4 < randY+2; intCount4++){
                 board.setGrid(intCount3, intCount4, temp);
               }
             }
@@ -71,11 +71,11 @@ static BufferedReader keyboard;
     }
     while(intCruisers > 0){
       intCruisers--;
-      randSize = random(2, 1);
+      randSize = random(2, 2);
       randX = random(board.getSize()-randSize, 0);
-      randY = random(board.getSize()-3, 0);
+      randY = random(board.getSize()-1, 0);
       for(int intCount2 = randX; intCount2 < randX + randSize; intCount2++){
-        for(int intCount = randY; intCount < randY+3; intCount++){
+        for(int intCount = randY; intCount < randY+1; intCount++){
           if(board.getLocation(intCount2, intCount) != null){
             intCount = 100;
             intCount2 = 100;
@@ -85,16 +85,16 @@ static BufferedReader keyboard;
         if(intCount2 == randX + randSize - 1 && intCount2 != 100){
           randWeapon = random(2, 1);
           if(randWeapon == 1){
-            Battlecruiser temp = new Battlecruiser("Battlecruiser", randSize+1, randSize, false, new Ammo("explosive", 0, true));
+            Battlecruiser temp = new Battlecruiser("B", randSize, false, new Ammo("explosive", 0, 10, true));
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){
-              for(int intCount4 = randY; intCount4 < randY+3; intCount4++){
+              for(int intCount4 = randY; intCount4 < randY+1; intCount4++){
                 board.setGrid(intCount3, intCount4, temp);
               }
             }            
           }else{
-            Battlecruiser temp = new Battlecruiser("Battlecruiser", randSize+1, randSize, false, new Ammo("mortar", random(2, 1), false));
+            Battlecruiser temp = new Battlecruiser("B", randSize, false, new Ammo("mortar", random(2, 1), 10, false));
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){
-              for(int intCount4 = randY; intCount4 < randY+3; intCount4++){
+              for(int intCount4 = randY; intCount4 < randY+1; intCount4++){
                 board.setGrid(intCount3, intCount4, temp);
               }
             }
@@ -102,6 +102,7 @@ static BufferedReader keyboard;
         }
       }
     }
+    board.printBoard();
   }
 
   public static void singlePlayer() throws IOException{
@@ -114,7 +115,7 @@ static BufferedReader keyboard;
 
     System.out.println("Setting up both boards...");
     randomBoard(player);
-
+    randomBoard(computer);
     
   }
 

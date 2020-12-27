@@ -40,4 +40,18 @@ public class Grid {
     this.grid[intX][intY] = ship;
   }
 
+  public void printBoard(){
+    for(int i = 0; i < this.getSize(); i++){
+      for(int j = 0; j < this.getSize(); j++){
+        if(this.getLocation(i, j) == null){
+          System.out.print(". ");
+          
+        }else{
+          System.out.print(this.getLocation(i, j).getType() + " ");
+        }
+      }
+      System.out.println();
+    }
+  }
+
 }
