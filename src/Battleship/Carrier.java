@@ -54,46 +54,49 @@ public class Carrier extends Ship{
       if(this.getPlane().getName().equals("bomber")){
         for(int intCount = 0; intCount < board.getSize() && hasFound; intCount++){
           if(board.getLocation(intCount, intY) != null){
-            if(!board.getLocation(intCount, intY).isDestroyed()){
+            if(!board.getLocation(intCount, intY).getState()){
               hasFound = true;
               System.out.println("Bomb hit a " + board.getLocation(intCount, intY).getType());
+              board.getLocation(intCount, intY).setHealth();
               board.setGrid(intCount, intY, destroyed);
               for(int intCount2 = 0; intCount2 < this.getPlane().getSpread(); intCount2++){
-                if(intX+intCount2 < board.getSize()){
-                  if(board.getLocation(intX+intCount2, intY) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.setGrid(intX, intY, destroyed);
+                if(intCount+intCount2 < board.getSize()){
+                  if(board.getLocation(intCount+intCount2, intY) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    board.setGrid(intCount+intCount2, intY, destroyed);
+                    board.getLocation(intCount+intCount2, intY).setHealth();
                   }else{
-                    board.setGrid(intX+intCount2, intY, empty);
+                    board.setGrid(intCount+intCount2, intY, empty);
                   }
-                }if(intX-intCount2 > 0){
-                  if(board.getLocation(intX-intCount2, intY) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.setGrid(intX, intY, destroyed);
+                }if(intCount-intCount2 > 0){
+                  if(board.getLocation(intCount-intCount2, intY) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    board.setGrid(intCount-intCount2, intY, destroyed);
+                    board.getLocation(intCount-intCount2, intY).setHealth();
                   }else{
-                    board.setGrid(intX-intCount2, intY, empty);
+                    board.setGrid(intCount-intCount2, intY, empty);
                   }
                 }if(intY+intCount2 < board.getSize()){
-                  if(board.getLocation(intX, intY+intCount2) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.setGrid(intX, intY, destroyed);
+                  if(board.getLocation(intCount, intY+intCount2) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    board.setGrid(intCount, intY+intCount2, destroyed);
+                    board.getLocation(intCount, intY+intCount2).setHealth();
                   }else{
-                    board.setGrid(intX, intY+intCount2, empty);
+                    board.setGrid(intCount, intY+intCount2, empty);
                   }
                 }if(intY-intCount2 > 0){
-                  if(board.getLocation(intX, intY-intCount2) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.setGrid(intX, intY, destroyed);
+                  if(board.getLocation(intCount, intY-intCount2) != null){
+                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    board.setGrid(intCount, intY-intCount2, destroyed);
+                    board.getLocation(intCount, intY-intCount2).setHealth();
                   }else{
-                    board.setGrid(intX, intY-intCount2, empty);
+                    board.setGrid(intCount, intY-intCount2, empty);
                   }
                 }
+              }
             }
-          }
-
-          if(board.getLocation(intX, intCount) != null){
-            board.getLocation(intX, intCount).setFire();
-          }      
+          }    
+        } 
       }else if(this.getPlane().getScout()){
         for(int intCount = 0; intCount < board.getSize(); intCount++){
           if(board.getLocation(intCount, intY) != null){
