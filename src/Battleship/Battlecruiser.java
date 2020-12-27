@@ -7,9 +7,9 @@ public class Battlecruiser extends Ship{
 	private int intLength;
   private static int intPlanesShot = 0;
 	
-	public Battlecruiser (int intID, String strType, int intLength, boolean isDestroyed, Ammo ammoType) {
+	public Battlecruiser (char chrID, String strType, int intLength, boolean isDestroyed, Ammo ammoType) {
 
-		super(intID, strType, intLength, isDestroyed);
+		super(chrID, strType, intLength, isDestroyed);
     this.intLength = intLength;
 		this.isJammed = false;
 		this.ammoType = ammoType;
@@ -47,8 +47,8 @@ public class Battlecruiser extends Ship{
   }
 
   public void shootGun(Grid board, int intX, int intY){
-      Ship destroyed = new Ship("Destoyed", 0, true);
-      Ship empty = new Ship("Empty", 0, true);
+      Ship destroyed = new Ship('X', "Destoyed", 0, true);
+      Ship empty = new Ship(' ', "Empty", 0, true);
       if(!this.getStatus() && this.getAmmo().getQuantity() != 0){
 
         this.getAmmo().setAmmo();

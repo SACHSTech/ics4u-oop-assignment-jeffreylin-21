@@ -41,13 +41,19 @@ public class Grid {
   }
 
   public void printBoard(){
+    
+    System.out.println("  1 2 3 4 5 6 7 8 9");
+
     for(int i = 0; i < this.getSize(); i++){
+      System.out.print((i+1) + " ");
+
       for(int j = 0; j < this.getSize(); j++){
+
         if(this.getLocation(i, j) == null){
           System.out.print(". ");
           
         }else{
-          System.out.print(this.getLocation(i, j).getType() + " ");
+          System.out.print(this.getLocation(i, j).getID() + " ");
         }
       }
       System.out.println();

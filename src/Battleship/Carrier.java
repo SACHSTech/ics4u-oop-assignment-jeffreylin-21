@@ -7,9 +7,9 @@ public class Carrier extends Ship{
 	private int intWidth;
   private static int intShipsFound = 0;
 	
-	public Carrier (int intID, String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
+	public Carrier (char chrID, String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
     
-    super(intID, strType, 2, isDestroyed);
+    super(chrID, strType, 2, isDestroyed);
 		this.planeType = planeType;
     this.intWidth = intWidth;
 		this.intNumPlanes = intNumPlanes;
@@ -47,8 +47,8 @@ public class Carrier extends Ship{
   }
 
   public void launchPlane(Grid board, int intX, int intY){
-    Ship destroyed = new Ship("Destoyed", 0, true);
-    Ship empty = new Ship("Empty", 0, true);
+    Ship destroyed = new Ship('X', "Destoyed", 0, true);
+    Ship empty = new Ship(' ', "Empty", 0, true);
     if(this.canLaunch()){
       if(this.getPlane().getName().equals("bomber")){
         for(int intCount = 0; intCount < board.getSize(); intCount++){
