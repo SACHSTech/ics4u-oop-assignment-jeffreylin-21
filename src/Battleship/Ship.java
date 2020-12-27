@@ -3,13 +3,14 @@ package Battleship;
 public class Ship {
 	
 	private String strType;
+  private int intID;
 	private int intShipSunk;
 	private int intHealth;
 	private boolean isDestroyed;	
   private boolean isOnFire;
 	
-	public Ship (String strType, int intHealth, boolean isDestroyed) {
-
+	public Ship (int intID, String strType, int intHealth, boolean isDestroyed) {
+    this.intID = intID;
 		this.strType = strType;
 		this.intHealth = intHealth;
     this.intShipSunk = 0;
@@ -18,6 +19,13 @@ public class Ship {
 
 	}
 
+  public String toString(){
+    return strType + " sunk" + this.getShipsSunk();
+  }
+
+  public int getID(){
+    return this.intID;
+  }
   public String getType(){
     return this.strType;
   }
@@ -47,5 +55,9 @@ public class Ship {
 
   public void setFire(){
     this.isOnFire = true;
+  }
+
+  public int getShipsSunk(){
+    return this.intShipSunk;
   }
 }

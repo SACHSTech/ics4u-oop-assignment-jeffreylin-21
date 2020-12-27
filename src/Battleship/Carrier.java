@@ -7,9 +7,9 @@ public class Carrier extends Ship{
 	private int intWidth;
   private static int intShipsFound = 0;
 	
-	public Carrier (String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
+	public Carrier (int intID, String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
     
-    super(strType, 2, isDestroyed);
+    super(intID, strType, 2, isDestroyed);
 		this.planeType = planeType;
     this.intWidth = intWidth;
 		this.intNumPlanes = intNumPlanes;

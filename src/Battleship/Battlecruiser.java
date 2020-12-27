@@ -7,9 +7,9 @@ public class Battlecruiser extends Ship{
 	private int intLength;
   private static int intPlanesShot = 0;
 	
-	public Battlecruiser (String strType, int intLength, boolean isDestroyed, Ammo ammoType) {
+	public Battlecruiser (int intID, String strType, int intLength, boolean isDestroyed, Ammo ammoType) {
 
-		super(strType, intLength, isDestroyed);
+		super(intID, strType, intLength, isDestroyed);
     this.intLength = intLength;
 		this.isJammed = false;
 		this.ammoType = ammoType;
