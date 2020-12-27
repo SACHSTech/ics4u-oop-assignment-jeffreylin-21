@@ -6,6 +6,7 @@ public class Grid {
   private int intSize;
   private int intShipNum;
   private Ship[][] grid;
+  private Ship activeShips[];
 
 	public Grid (int intPlayerNum, int intSize, int intShipNum) {
 
@@ -13,6 +14,7 @@ public class Grid {
     this.intSize = intSize;
     this.intShipNum = intShipNum;
     grid = new Ship[this.intSize][this.intSize];
+    activeShips = new Ship[this.intSize];
 
   }
 
@@ -28,6 +30,9 @@ public class Grid {
     return this.intShipNum;
   }
 
+  public Ship[] getActive(){
+    return this.activeShips;
+  }
   public void setShipNum(int intShipNum) {
     this.intShipNum = intShipNum;
   }
@@ -42,6 +47,14 @@ public class Grid {
 
   public void printBoard(){
     
+    System.out.println("Legend: ");
+    for(int i = 0; i < this.getShipNum(); i++){
+      if(!this.getActive()[i].getState()){
+        System.out.println(this.getActive()[i]);
+      }
+    }
+
+    Simulator.newLine();
     System.out.println("  1 2 3 4 5 6 7 8 9");
 
     for(int i = 0; i < this.getSize(); i++){

@@ -15,6 +15,10 @@ public class Carrier extends Ship{
 		this.intNumPlanes = intNumPlanes;
 	}
 
+  public String toString(){
+    return super.getID() + ": " + super.getType() + " equipped with " + this.getPlane().getName();
+  }
+
   public int getWidth(){
     return this.intWidth;
   }

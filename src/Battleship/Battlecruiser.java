@@ -15,6 +15,10 @@ public class Battlecruiser extends Ship{
 		this.ammoType = ammoType;
 
 	}
+
+  public String toString(){
+    return super.getID() + ": " + super.getType() + " equipped with " + this.getAmmo().getAmmoType();
+  }
 	
   public int getLength(){
     return this.intLength;
