@@ -49,13 +49,11 @@ public class Carrier extends Ship{
   public void launchPlane(Grid board, int intX, int intY){
     Ship destroyed = new Ship("Destoyed", 0, true);
     Ship empty = new Ship("Empty", 0, true);
-    boolean hasFound = false;
     if(this.canLaunch()){
       if(this.getPlane().getName().equals("bomber")){
-        for(int intCount = 0; intCount < board.getSize() && hasFound; intCount++){
+        for(int intCount = 0; intCount < board.getSize(); intCount++){
           if(board.getLocation(intCount, intY) != null){
             if(!board.getLocation(intCount, intY).getState()){
-              hasFound = true;
               System.out.println("Bomb hit a " + board.getLocation(intCount, intY).getType());
               board.getLocation(intCount, intY).setHealth();
               board.setGrid(intCount, intY, destroyed);
