@@ -115,7 +115,7 @@ static BufferedReader keyboard;
               }
             }            
           }else{
-            Battlecruiser temp = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("mortar", random(3, 5), 10, false));
+            Battlecruiser temp = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("mortar", random(3, 2), 10, false));
             board.getActive()[shipNum] = temp;
             shipNum++;
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){
@@ -273,7 +273,7 @@ static BufferedReader keyboard;
 
       player1.printBoard(player2);
       player2.printBoard(player1);
-
+      sleep(1);
     }
     if(player1.getShipNum() == 0){
       System.out.println("Player 2 wins!");

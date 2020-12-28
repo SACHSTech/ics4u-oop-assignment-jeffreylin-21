@@ -114,6 +114,7 @@ public class Carrier extends Ship{
             setShipsFound();
             intRand = Simulator.random(10, 1);
             if(intRand == 1){
+              System.out.println("Plane was shot down");
               Battlecruiser.setPlaneShot();
               this.setPlanes();
             }
@@ -124,6 +125,13 @@ public class Carrier extends Ship{
 
           if(board.getLocation(intX, intCount) != null){
             board.getLocation(intX, intCount).setFire();
+            setShipsFound();
+            intRand = Simulator.random(10, 1);
+            if(intRand == 1){
+              System.out.println("Plane was shot down");
+              Battlecruiser.setPlaneShot();
+              this.setPlanes();
+            }
           }else{
             board.setGrid(intX, intCount, empty);
           }     
