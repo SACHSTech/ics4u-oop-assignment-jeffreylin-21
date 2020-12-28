@@ -68,7 +68,7 @@ static BufferedReader keyboard;
         }
         if(intCount2 == randX + randSize - 1 && intCount2 != 100){
           randWeapon = random(2, 1);
-          if(randWeapon == 1 || randWeapon == 2){
+          if(randWeapon == 1){
             Carrier temp = new Carrier((char)(shipNum + 'A'), "Carrier", randSize+1, randSize, false, new Plane("bomber", random(2, 0), false));
             board.getActive()[shipNum] = temp;
             shipNum++;       
@@ -105,7 +105,7 @@ static BufferedReader keyboard;
         }
         if(intCount2 == randX + randSize - 1 && intCount2 != 100){
           randWeapon = random(2, 1);
-          if(randWeapon == 3){
+          if(randWeapon == 1){
             Battlecruiser temp = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("explosive", 0, 10, true));
             board.getActive()[shipNum] = temp;
             shipNum++;
@@ -129,9 +129,35 @@ static BufferedReader keyboard;
     }
   }
 
+  public static String computerAttack(Grid computer){
+    boolean hasFound = false;
+    int rand, randX, randY;
+
+    while(!hasFound){
+      rand = random(4, 0);
+      if(!computer.getActive()[intShip].getState()){
+        hasFound = true;
+      }
+    }
+
+    hasFound = false;
+    while(!hasFound){
+      randX = random(computer.getSize(), 0);
+      randY = random(computer.getSize(), 0);
+      if(computer.getLocation(randX, randY) == null){
+        hasFound = true;
+      }
+    }
+
+    return Character.toString(rand - 'A') + " " + Integer.toString(randX) + " " + Integer.toString(randY);
+
+  }
+
   public static void singlePlayer() throws IOException{
     int intMaxMoves;
     int intChoice;
+    String strCommand;
+    int intShip, intX, intY;
 
     newLine();
     System.out.println("Choose your board size, '3', '5', '7', '9'");
@@ -150,21 +176,28 @@ static BufferedReader keyboard;
     newLine();
     player.printLegend();
     player.printBoard(computer);
-
+    System.out.println("Enter -1 -1 as a coordinate to quit");
     while (intMaxMoves > 0 && player.getShipNum() != 0 && computer.getShipNum() != 0){
       intMaxMoves--;
 
       System.out.println("Choose ship to attack, row of target, and coloumn of target, e.g 'A 3 4'");
-      String strCommand = keyboard.readLine();
-      int intShip = strCommand.charAt(0) - 'A';
-      int intX = strCommand.charAt(2) - '0';
-      int intY = strCommand.charAt(4) - '0';
+      strCommand = keyboard.readLine();
+      intShip = strCommand.charAt(0) - 'A';
+      intX = strCommand.charAt(2) - '0';
+      intY = strCommand.charAt(4) - '0';
 
       if(intX != -1 && intY != -1){
         player.getActive()[intShip].attack(computer, intX-1, intY-1);
       }else{
         intMaxMoves = 0;
       }
+
+      strCommand = computerAttack(computer);
+      intShip = strCommand.charAt(0) - 'A';
+      intX = strCommand.charAt(2) - '0';
+      intY = strCommand.charAt(4) - '0';
+      computer.getActive()[intShip].attack(computer, intX-1, intY-1);
+
       player.printBoard(computer);
 
     }
