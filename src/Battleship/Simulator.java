@@ -131,6 +131,7 @@ static BufferedReader keyboard;
 
   public static void singlePlayer() throws IOException{
     int intChoice;
+    newLine();
     System.out.println("Choose your board size, '3', '5', '7', '9'");
     intChoice = readInt();
 
@@ -141,12 +142,12 @@ static BufferedReader keyboard;
     System.out.println("Setting up both boards...");
     randomBoard(player);
     randomBoard(computer);
-    sleep(2);
+    sleep(1);
 
     newLine();
-    System.out.println("Here is your board:");
+    player.printLegend();
     player.printBoard();
-    
+    computer.printEnemyBoard();
     
   }
 

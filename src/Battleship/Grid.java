@@ -45,17 +45,25 @@ public class Grid {
     this.grid[intX][intY] = ship;
   }
 
-  public void printBoard(){
-    
+  public void printLegend(){
     System.out.println("Legend: ");
     for(int i = 0; i < this.getShipNum(); i++){
       if(!this.getActive()[i].getState()){
         System.out.println(this.getActive()[i]);
       }
     }
+    System.out.println(".: unkwown tile");
+    System.out.println("X: Destroyed tile");
+    Simulator.newLine();
+  }
+
+  public void printBoard(){
+    System.out.println("Player");
+    for(int i = 0; i <= this.getSize(); i++){
+      System.out.print(i + " ");
+    }
 
     Simulator.newLine();
-    System.out.println("  1 2 3 4 5 6 7 8 9");
 
     for(int i = 0; i < this.getSize(); i++){
       System.out.print((i+1) + " ");
@@ -71,6 +79,33 @@ public class Grid {
       }
       System.out.println();
     }
+    Simulator.newLine();
+  }
+
+  public void printEnemyBoard(){
+    
+    System.out.println("Enemy");
+    for(int i = 0; i <= this.getSize(); i++){
+      System.out.print(i + " ");
+    }
+
+    Simulator.newLine();
+
+    for(int i = 0; i < this.getSize(); i++){
+      System.out.print((i+1) + " ");
+
+      for(int j = 0; j < this.getSize(); j++){
+
+        if(this.getLocation(i, j) != null && (this.getLocation(i, j).getState() || this.getLocation(i, j).isRevealed())){
+          System.out.print(this.getLocation(i, j).getID() + " ");
+        }else{
+          System.out.print(". ");
+        }
+
+      }
+      System.out.println();
+    }
+    Simulator.newLine();
   }
 
 }
