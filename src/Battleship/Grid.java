@@ -33,8 +33,8 @@ public class Grid {
   public Ship[] getActive(){
     return this.activeShips;
   }
-  public void setShipNum(int intShipNum) {
-    this.intShipNum = intShipNum;
+  public void setShipNum() {
+    this.intShipNum--;
   }
 
   public Ship getLocation(int intX, int intY) {
@@ -58,10 +58,19 @@ public class Grid {
   }
 
   public void printBoard(){
-    System.out.println("Player");
+    
+    for(int intCount = 0; intCount < this.getSize()*2-5; intCount++){
+      System.out.print(" ");
+    }
+    System.out.println("Player | Enemy");
+
     for(int i = 0; i <= this.getSize(); i++){
       System.out.print(i + " ");
     }
+    System.out.print("| ");
+    for(int i = this.getSize(); i >= 0; i--){
+      System.out.print(i + " ");
+    }    
 
     Simulator.newLine();
 
@@ -77,24 +86,8 @@ public class Grid {
           System.out.print(this.getLocation(i, j).getID() + " ");
         }
       }
-      System.out.println();
-    }
-    Simulator.newLine();
-  }
-
-  public void printEnemyBoard(){
-    
-    System.out.println("Enemy");
-    for(int i = 0; i <= this.getSize(); i++){
-      System.out.print(i + " ");
-    }
-
-    Simulator.newLine();
-
-    for(int i = 0; i < this.getSize(); i++){
-      System.out.print((i+1) + " ");
-
-      for(int j = 0; j < this.getSize(); j++){
+      System.out.print("| ");
+      for(int j = this.getSize()-1; j > -1 ; j--){
 
         if(this.getLocation(i, j) != null && (this.getLocation(i, j).getState() || this.getLocation(i, j).isRevealed())){
           System.out.print(this.getLocation(i, j).getID() + " ");
@@ -103,7 +96,8 @@ public class Grid {
         }
 
       }
-      System.out.println();
+      System.out.println((i+1) + " ");
+      
     }
     Simulator.newLine();
   }

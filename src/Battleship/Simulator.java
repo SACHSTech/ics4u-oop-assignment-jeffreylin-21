@@ -130,13 +130,16 @@ static BufferedReader keyboard;
   }
 
   public static void singlePlayer() throws IOException{
+    int intMaxMoves;
     int intChoice;
+
     newLine();
     System.out.println("Choose your board size, '3', '5', '7', '9'");
     intChoice = readInt();
 
     Grid player = new Grid(1, intChoice, (intChoice-1)/2);
     Grid computer = new Grid(2, intChoice, (intChoice-1)/2);
+    intMaxMoves = intChoice * intChoice;
 
     newLine();
     System.out.println("Setting up both boards...");
@@ -147,7 +150,24 @@ static BufferedReader keyboard;
     newLine();
     player.printLegend();
     player.printBoard();
-    computer.printEnemyBoard();
+
+    while (intMaxMoves > 0 && player.getShipNum() != 0 && computer.getShipNum() != 0){
+      intMaxMoves--;
+
+      System.out.println("Choose ship to attack, row of target, and coloumn of target, e.g 'A 3 4'");
+      String strCommand = keyboard.readLine();
+      int intShip = strCommand.charAt(0) - 'A';
+      int intX = strCommand.charAt(2);
+      int intY = strCommand.charAt(4);
+
+      if(intX != -1 && intY != -1){
+        player.getActive()[intShip].attack(computer, intX-1, intY-1);
+      }else{
+        intMaxMoves = 0;
+      }
+      player.printBoard();
+
+    }
     
   }
 

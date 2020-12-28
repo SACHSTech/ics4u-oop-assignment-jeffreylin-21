@@ -50,7 +50,7 @@ public class Carrier extends Ship{
     return this.planeType;
   }
 
-  public void launchPlane(Grid board, int intX, int intY){
+  public void attack(Grid board, int intX, int intY){
     Ship destroyed = new Ship('X', "Destoyed", 0, true);
     Ship empty = new Ship(' ', "Empty", 0, true);
     if(this.canLaunch()){
@@ -59,14 +59,14 @@ public class Carrier extends Ship{
           if(board.getLocation(intCount, intY) != null){
             if(!board.getLocation(intCount, intY).getState()){
               System.out.println("Bomb hit a " + board.getLocation(intCount, intY).getType());
-              board.getLocation(intCount, intY).setHealth();
+              board.getLocation(intCount, intY).setHealth(board);
               board.setGrid(intCount, intY, destroyed);
               for(int intCount2 = 0; intCount2 < this.getPlane().getSpread(); intCount2++){
                 if(intCount+intCount2 < board.getSize()){
                   if(board.getLocation(intCount+intCount2, intY) != null){
                     System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
                     board.setGrid(intCount+intCount2, intY, destroyed);
-                    board.getLocation(intCount+intCount2, intY).setHealth();
+                    board.getLocation(intCount+intCount2, intY).setHealth(board);
                   }else{
                     board.setGrid(intCount+intCount2, intY, empty);
                   }
@@ -74,7 +74,7 @@ public class Carrier extends Ship{
                   if(board.getLocation(intCount-intCount2, intY) != null){
                     System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
                     board.setGrid(intCount-intCount2, intY, destroyed);
-                    board.getLocation(intCount-intCount2, intY).setHealth();
+                    board.getLocation(intCount-intCount2, intY).setHealth(board);
                   }else{
                     board.setGrid(intCount-intCount2, intY, empty);
                   }
@@ -82,7 +82,7 @@ public class Carrier extends Ship{
                   if(board.getLocation(intCount, intY+intCount2) != null){
                     System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
                     board.setGrid(intCount, intY+intCount2, destroyed);
-                    board.getLocation(intCount, intY+intCount2).setHealth();
+                    board.getLocation(intCount, intY+intCount2).setHealth(board);
                   }else{
                     board.setGrid(intCount, intY+intCount2, empty);
                   }
@@ -90,7 +90,7 @@ public class Carrier extends Ship{
                   if(board.getLocation(intCount, intY-intCount2) != null){
                     System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
                     board.setGrid(intCount, intY-intCount2, destroyed);
-                    board.getLocation(intCount, intY-intCount2).setHealth();
+                    board.getLocation(intCount, intY-intCount2).setHealth(board);
                   }else{
                     board.setGrid(intCount, intY-intCount2, empty);
                   }

@@ -34,10 +34,11 @@ public class Ship {
     return this.intHealth;
   }
 
-  public void setHealth() {
+  public void setHealth(Grid board) {
     this.intHealth--;
     if (intHealth == 0) {
       this.changeState();
+      board.setShipNum();
     }
   } 
 
@@ -55,6 +56,10 @@ public class Ship {
 
   public void setFire(){
     this.isOnFire = true;
+  }
+
+  public void attack(Grid board, int intX, int intY){
+    System.out.println("Attacked");
   }
 
   public int getShipsSunk(){
