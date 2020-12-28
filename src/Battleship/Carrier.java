@@ -68,7 +68,7 @@ public class Carrier extends Ship{
                   System.out.println("Shot hit a " + board.getLocation(intCount+intCount2, intY).getType());
                   board.getLocation(intCount+intCount2, intY).setHealth(board);
                   board.setGrid(intCount+intCount2, intY, destroyed);
-                }else{
+                }else if(board.getLocation(intCount+intCount2, intY) == null){
                   board.setGrid(intCount+intCount2, intY, empty);
                 }
               }if(intCount-intCount2 > 0){
@@ -77,7 +77,7 @@ public class Carrier extends Ship{
                   board.getLocation(intCount-intCount2, intY).setHealth(board);
                   board.setGrid(intCount-intCount2, intY, destroyed);
                   
-                }else{
+                }else if(board.getLocation(intCount-intCount2, intY) == null){
                   board.setGrid(intCount-intCount2, intY, empty);
                 }
               }if(intY+intCount2 < board.getSize()){
@@ -86,7 +86,7 @@ public class Carrier extends Ship{
                   board.getLocation(intCount, intY+intCount2).setHealth(board);
                   board.setGrid(intCount, intY+intCount2, destroyed);
                   
-                }else{
+                }else if(board.getLocation(intCount, intY+intCount2) == null){
                   board.setGrid(intCount, intY+intCount2, empty);
                 }
               }if(intY-intCount2 > 0){
@@ -95,13 +95,13 @@ public class Carrier extends Ship{
                   board.getLocation(intCount, intY-intCount2).setHealth(board);
                   board.setGrid(intCount, intY-intCount2, destroyed);
                   
-                }else{
+                }else if(board.getLocation(intCount, intY-intCount2) == null){
                   board.setGrid(intCount, intY-intCount2, empty);
                 }
               }
             }
             intCount = 100;
-          }else{
+          }else if(board.getLocation(intCount, intY) == null){
             board.setGrid(intCount, intY, empty);
           }    
         } 

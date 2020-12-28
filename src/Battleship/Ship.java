@@ -32,6 +32,7 @@ public class Ship {
 
   public void setHealth(Grid board) {
     this.intHealth--;
+    
     if (this.intHealth == 0) {
       this.changeState();
       board.setShipNum();

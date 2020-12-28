@@ -136,8 +136,8 @@ static BufferedReader keyboard;
     randX = 0;
     randY = 0;
 
-    while(!hasFound && computer.getShipNum() != 0){
-      rand = random(computer.getShipNum(), 0);
+    while(!hasFound && computer.getShipNum() > 0){
+      rand = random(computer.getActive().length, 0);
       if(!computer.getActive()[rand].getState()){
         hasFound = true;
       }
@@ -191,7 +191,11 @@ static BufferedReader keyboard;
 
       System.out.println("You:");
       if(intX != -1 && intY != -1){
-        player.getActive()[intShip].attack(computer, intX-1, intY-1);
+        if(!player.getActive()[intShip].getState()){
+          player.getActive()[intShip].attack(computer, intX-1, intY-1);
+        }else{
+          System.out.println("Ship has been destroyed.");
+        }
       }else{
         intMaxMoves = 0;
       }
@@ -200,8 +204,11 @@ static BufferedReader keyboard;
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
-      System.out.println("Enemy:");
-      computer.getActive()[intShip].attack(player, intX-1, intY-1);
+      
+      if(!computer.getActive()[intShip].getState()){
+        System.out.println("Enemy:");
+        computer.getActive()[intShip].attack(player, intX-1, intY-1);
+      }
 
       player.printBoard(computer);
 
@@ -248,20 +255,21 @@ static BufferedReader keyboard;
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
-
-      System.out.println("Player 1:");
-      if(intX != -1 && intY != -1){
+      
+      if(!player1.getActive()[intShip].getState()){
+        System.out.println("Player 1:");
         player1.getActive()[intShip].attack(player2, intX-1, intY-1);
-      }else{
-        intMaxMoves = 0;
       }
 
       strCommand = computerAttack(player2, player1);
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
-      System.out.println("Player 2:");
-      player2.getActive()[intShip].attack(player1, intX-1, intY-1);
+      
+      if(!player2.getActive()[intShip].getState()){
+        System.out.println("Player 2:");
+        player2.getActive()[intShip].attack(player1, intX-1, intY-1);
+      }
 
       player1.printBoard(player2);
       player2.printBoard(player1);

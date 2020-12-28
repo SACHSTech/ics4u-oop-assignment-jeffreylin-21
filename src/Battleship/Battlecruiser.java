@@ -54,7 +54,6 @@ public class Battlecruiser extends Ship{
       Ship destroyed = new Ship('X', "Destoyed", 0, true);
       Ship empty = new Ship(' ', "Empty", 0, true);
       if(!this.getStatus() && this.getAmmo().getQuantity() != 0){
-
         this.getAmmo().setAmmo();
 
         if(intX >= board.getSize() || intY >= board.getSize() || intX < 0 || intY < 0){

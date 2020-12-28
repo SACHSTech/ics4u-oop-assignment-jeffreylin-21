@@ -14,7 +14,7 @@ public class Grid {
     this.intSize = intSize;
     this.intShipNum = intShipNum;
     grid = new Ship[this.intSize][this.intSize];
-    activeShips = new Ship[this.intSize];
+    activeShips = new Ship[this.intShipNum];
 
   }
 
