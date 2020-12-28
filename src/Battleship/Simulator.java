@@ -206,7 +206,12 @@ static BufferedReader keyboard;
       player.printBoard(computer);
 
     }
-    
+    if(computer.getShipNum() == 0){
+      System.out.println("You Win!");
+    }else{
+      System.out.println("You lose...");
+    }
+    System.out.println("A total of " + Carrier.getShipsFound() + " ships were found and " + Battlecruiser.getPlaneShot() + " planes were shot that round.");
   }
 
   public static void watchGame(){

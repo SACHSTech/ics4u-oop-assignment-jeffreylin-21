@@ -4,7 +4,6 @@ public class Ship {
 	
 	private String strType;
   private char chrID;
-	private int intShipSunk;
 	private int intHealth;
 	private boolean isDestroyed;	
   private boolean isOnFire;
@@ -64,7 +63,4 @@ public class Ship {
     System.out.println("Attacked");
   }
 
-  public int getShipsSunk(){
-    return this.intShipSunk;
-  }
 }

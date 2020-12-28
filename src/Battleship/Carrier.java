@@ -51,6 +51,7 @@ public class Carrier extends Ship{
   }
 
   public void attack(Grid board, int intX, int intY){
+    int intRand;
     Ship destroyed = new Ship('X', "Destoyed", 0, true);
     Ship empty = new Ship(' ', "Empty", 0, true);
     if(this.canLaunch()){
@@ -108,6 +109,13 @@ public class Carrier extends Ship{
         for(int intCount = 0; intCount < board.getSize(); intCount++){
           if(board.getLocation(intCount, intY) != null){
             board.getLocation(intCount, intY).setFire();
+            setShipsFound();
+            intRand = Simulator.random(10, 1);
+            if(intRand == 1){
+              Battlecruiser.setPlaneShot();
+              this.setPlanes();
+            }
+
           }else{
             board.setGrid(intCount, intY, empty);
           }     
