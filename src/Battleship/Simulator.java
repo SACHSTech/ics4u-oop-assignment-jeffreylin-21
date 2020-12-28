@@ -115,7 +115,7 @@ static BufferedReader keyboard;
               }
             }            
           }else{
-            Battlecruiser temp = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("mortar", random(3, 1), 10, false));
+            Battlecruiser temp = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("mortar", random(3, 5), 10, false));
             board.getActive()[shipNum] = temp;
             shipNum++;
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){

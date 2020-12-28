@@ -9,7 +9,7 @@ public class Carrier extends Ship{
 	
 	public Carrier (char chrID, String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
     
-    super(chrID, strType, 2, isDestroyed);
+    super(chrID, strType, intWidth * 2, isDestroyed);
 		this.planeType = planeType;
     this.intWidth = intWidth;
 		this.intNumPlanes = intNumPlanes;
@@ -56,6 +56,7 @@ public class Carrier extends Ship{
     Ship empty = new Ship(' ', "Empty", 0, true);
     if(this.canLaunch()){
       if(this.getPlane().getName().equals("bomber")){
+        System.out.println("Launched bomber");
         for(int intCount = 0; intCount < board.getSize(); intCount++){
           if(board.getLocation(intCount, intY) != null && !board.getLocation(intCount, intY).getState()){
               
@@ -106,6 +107,7 @@ public class Carrier extends Ship{
           }    
         } 
       }else if(this.getPlane().getScout()){
+        System.out.println("Launched scout");
         for(int intCount = 0; intCount < board.getSize(); intCount++){
           if(board.getLocation(intCount, intY) != null){
             board.getLocation(intCount, intY).setFire();

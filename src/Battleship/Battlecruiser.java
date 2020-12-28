@@ -57,7 +57,7 @@ public class Battlecruiser extends Ship{
         this.getAmmo().setAmmo();
 
         if(intX >= board.getSize() || intY >= board.getSize() || intX < 0 || intY < 0){
-          System.out.println("Shot missed!a");
+          System.out.println("Shot missed!");
         }else{
           
           if(board.getLocation(intX, intY) != null && !board.getLocation(intX, intY).getState()){
@@ -67,7 +67,7 @@ public class Battlecruiser extends Ship{
               board.getLocation(intX, intY).setFire();
             }
             board.setGrid(intX, intY, destroyed);
-          }else{
+          }else if(board.getLocation(intX, intY) == null){
             board.setGrid(intX, intY, empty);
             System.out.println("Shot missed!");            
           }if(this.getAmmo().getAmmoType().equals("mortar")){
