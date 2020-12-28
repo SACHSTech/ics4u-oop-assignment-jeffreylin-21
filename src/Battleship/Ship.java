@@ -10,6 +10,7 @@ public class Ship {
   private boolean isOnFire;
 	
 	public Ship (char chrID, String strType, int intHealth, boolean isDestroyed) {
+    
     this.chrID = chrID;
 		this.strType = strType;
 		this.intHealth = intHealth;
@@ -20,12 +21,13 @@ public class Ship {
 	}
 
   public String toString(){
-    return strType + " sunk" + this.getShipsSunk();
+    return strType + " sunk " + this.getShipsSunk();
   }
 
   public char getID(){
     return this.chrID;
   }
+
   public String getType(){
     return this.strType;
   }

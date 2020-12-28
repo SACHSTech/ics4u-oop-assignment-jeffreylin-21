@@ -105,7 +105,7 @@ static BufferedReader keyboard;
         }
         if(intCount2 == randX + randSize - 1 && intCount2 != 100){
           randWeapon = random(2, 1);
-          if(randWeapon == 1){
+          if(randWeapon == 3){
             Battlecruiser temp = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("explosive", 0, 10, true));
             board.getActive()[shipNum] = temp;
             shipNum++;
@@ -145,7 +145,7 @@ static BufferedReader keyboard;
     System.out.println("Setting up both boards...");
     randomBoard(player);
     randomBoard(computer);
-    sleep(1);
+    //sleep(1);
 
     newLine();
     player.printLegend();

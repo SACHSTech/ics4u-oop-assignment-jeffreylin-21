@@ -88,7 +88,6 @@ public class Grid {
       }
       System.out.print("| ");
       for(int j = computer.getSize()-1; j > -1 ; j--){
-
         if(computer.getLocation(i, j) != null && (computer.getLocation(i, j).getState() || computer.getLocation(i, j).isRevealed())){
           System.out.print(computer.getLocation(i, j).getID() + " ");
         }else{

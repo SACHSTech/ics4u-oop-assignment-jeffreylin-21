@@ -64,7 +64,7 @@ public class Carrier extends Ship{
               for(int intCount2 = 0; intCount2 < this.getPlane().getSpread(); intCount2++){
                 if(intCount+intCount2 < board.getSize()){
                   if(board.getLocation(intCount+intCount2, intY) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    System.out.println("Shot hit a " + board.getLocation(intCount+intCount2, intY).getType());
                     board.setGrid(intCount+intCount2, intY, destroyed);
                     board.getLocation(intCount+intCount2, intY).setHealth(board);
                   }else{
@@ -72,7 +72,7 @@ public class Carrier extends Ship{
                   }
                 }if(intCount-intCount2 > 0){
                   if(board.getLocation(intCount-intCount2, intY) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    System.out.println("Shot hit a " + board.getLocation(intCount-intCount2, intY).getType());
                     board.setGrid(intCount-intCount2, intY, destroyed);
                     board.getLocation(intCount-intCount2, intY).setHealth(board);
                   }else{
@@ -80,7 +80,7 @@ public class Carrier extends Ship{
                   }
                 }if(intY+intCount2 < board.getSize()){
                   if(board.getLocation(intCount, intY+intCount2) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    System.out.println("Shot hit a " + board.getLocation(intCount, intY+intCount2).getType());
                     board.setGrid(intCount, intY+intCount2, destroyed);
                     board.getLocation(intCount, intY+intCount2).setHealth(board);
                   }else{
@@ -88,7 +88,7 @@ public class Carrier extends Ship{
                   }
                 }if(intY-intCount2 > 0){
                   if(board.getLocation(intCount, intY-intCount2) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intCount, intY).getType());
+                    System.out.println("Shot hit a " + board.getLocation(intCount, intY-intCount2).getType());
                     board.setGrid(intCount, intY-intCount2, destroyed);
                     board.getLocation(intCount, intY-intCount2).setHealth(board);
                   }else{

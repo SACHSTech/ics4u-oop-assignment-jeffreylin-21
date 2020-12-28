@@ -33,7 +33,7 @@ public class Battlecruiser extends Ship{
   }
 
   public void setStatus(){
-    int intRand = (int)(Math.random()*5)+1;
+    int intRand = (int)(Math.random()*10)+1;
     if(intRand == 1){
       isJammed = true;
     }
@@ -58,70 +58,68 @@ public class Battlecruiser extends Ship{
         this.getAmmo().setAmmo();
 
         if(intX >= board.getSize() || intY >= board.getSize() || intX < 0 || intY < 0){
-          System.out.println(intX >= board.getSize());
-          System.out.println(board.getSize());
-          System.out.println(intX);
-          System.out.println(intY >= board.getSize());
-          System.out.println(intX < 0);
-          System.out.println(intY < 0);
+          System.out.println("Shot missed!");
         }else{
           
           if(board.getLocation(intX, intY) != null){
             System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
             board.getLocation(intX, intY).setHealth(board);
-            board.setGrid(intX, intY, destroyed);
             if(this.getAmmo().getExplosive()){
               board.getLocation(intX, intY).setFire();
-            }else if(this.getAmmo().getAmmoType().equals("mortar")){
-              for(int intCount = 0; intCount < this.getAmmo().getGunSpread(); intCount++){
-                if(intX+intCount < board.getSize()){
-                  if(board.getLocation(intX+intCount, intY) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.getLocation(intX+intCount, intY).setHealth(board);
-                    board.setGrid(intX, intY, destroyed);
-                  }else{
-                    board.setGrid(intX+intCount, intY, empty);
-                    System.out.println("Shot missed!");
-                  }
-                }if(intX-intCount > 0){
-                  if(board.getLocation(intX-intCount, intY) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.getLocation(intX-intCount, intY).setHealth(board);
-                    board.setGrid(intX, intY, destroyed);
-                  }else{
-                    board.setGrid(intX-intCount, intY, empty);
-                    System.out.println("Shot missed!");
-                  }
-                }if(intY+intCount < board.getSize()){
-                  if(board.getLocation(intX, intY+intCount) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.getLocation(intX, intY+intCount).setHealth(board);
-                    board.setGrid(intX, intY, destroyed);
-                  }else{
-                    board.setGrid(intX, intY+intCount, empty);
-                    System.out.println("Shot missed!");
-                  }
-                }if(intY-intCount > 0){
-                  if(board.getLocation(intX, intY-intCount) != null){
-                    System.out.println("Shot hit a " + board.getLocation(intX, intY).getType());
-                    board.getLocation(intX, intY-intCount).setHealth(board);
-                    board.setGrid(intX, intY, destroyed);
-                  }else{
-                    board.setGrid(intX, intY-intCount, empty);
-                    System.out.println("Shot missed!");
-                  }
-                }
-               
-              }
+                
             }
-          }else{
+            board.setGrid(intX, intY, destroyed);
+          }if(this.getAmmo().getAmmoType().equals("mortar")){
+            for(int intCount = 0; intCount < this.getAmmo().getGunSpread(); intCount++){
+              if(intX+intCount < board.getSize()){
+                if(board.getLocation(intX+intCount, intY) != null){
+                  System.out.println("Shot hit a " + board.getLocation(intX+intCount, intY).getType());
+                  board.getLocation(intX+intCount, intY).setHealth(board);
+                  board.setGrid(intX+intCount, intY, destroyed);
+                }else{
+                  board.setGrid(intX+intCount, intY, empty);
+                  System.out.println("Shot missed!");
+                }
+              }if(intX-intCount > 0){
+                if(board.getLocation(intX-intCount, intY) != null){
+                  System.out.println("Shot hit a " + board.getLocation(intX-intCount, intY).getType());
+                  board.getLocation(intX-intCount, intY).setHealth(board);
+                  board.setGrid(intX-intCount, intY, destroyed);
+                }else{
+                  board.setGrid(intX-intCount, intY, empty);
+                  System.out.println("Shot missed!");
+                }
+              }if(intY+intCount < board.getSize()){
+                if(board.getLocation(intX, intY+intCount) != null){
+                  System.out.println("Shot hit a " + board.getLocation(intX, intY+intCount).getType());
+                  board.getLocation(intX, intY+intCount).setHealth(board);
+                  board.setGrid(intX, intY+intCount, destroyed);
+                }else{
+                  board.setGrid(intX, intY+intCount, empty);
+                  System.out.println("Shot missed!");
+                }
+              }if(intY-intCount > 0){
+                if(board.getLocation(intX, intY-intCount) != null){
+                  System.out.println("Shot hit a " + board.getLocation(intX, intY-intCount).getType());
+                  board.getLocation(intX, intY-intCount).setHealth(board);
+                  board.setGrid(intX, intY-intCount, destroyed);
+                }else{
+                  board.setGrid(intX, intY-intCount, empty);
+                  System.out.println("Shot missed!");
+                }
+              }
+              
+            }
+          }else if (board.getLocation(intX, intY) == null){
             board.setGrid(intX, intY, empty);
             System.out.println("Shot missed! a");
           }
           
         }
-      }else{
+      }else if (this.getStatus()){
         System.out.println("Gun jammed!");
+      }else{
+        System.out.println("Out of ammo");
       }
       this.setStatus();
   }
