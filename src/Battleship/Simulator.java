@@ -149,7 +149,7 @@ static BufferedReader keyboard;
 
     newLine();
     player.printLegend();
-    player.printBoard();
+    player.printBoard(computer);
 
     while (intMaxMoves > 0 && player.getShipNum() != 0 && computer.getShipNum() != 0){
       intMaxMoves--;
@@ -157,15 +157,15 @@ static BufferedReader keyboard;
       System.out.println("Choose ship to attack, row of target, and coloumn of target, e.g 'A 3 4'");
       String strCommand = keyboard.readLine();
       int intShip = strCommand.charAt(0) - 'A';
-      int intX = strCommand.charAt(2);
-      int intY = strCommand.charAt(4);
+      int intX = strCommand.charAt(2) - '0';
+      int intY = strCommand.charAt(4) - '0';
 
       if(intX != -1 && intY != -1){
         player.getActive()[intShip].attack(computer, intX-1, intY-1);
       }else{
         intMaxMoves = 0;
       }
-      player.printBoard();
+      player.printBoard(computer);
 
     }
     

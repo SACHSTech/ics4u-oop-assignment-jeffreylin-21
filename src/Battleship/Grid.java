@@ -57,7 +57,7 @@ public class Grid {
     Simulator.newLine();
   }
 
-  public void printBoard(){
+  public void printBoard(Grid computer){
     
     for(int intCount = 0; intCount < this.getSize()*2-5; intCount++){
       System.out.print(" ");
@@ -87,10 +87,10 @@ public class Grid {
         }
       }
       System.out.print("| ");
-      for(int j = this.getSize()-1; j > -1 ; j--){
+      for(int j = computer.getSize()-1; j > -1 ; j--){
 
-        if(this.getLocation(i, j) != null && (this.getLocation(i, j).getState() || this.getLocation(i, j).isRevealed())){
-          System.out.print(this.getLocation(i, j).getID() + " ");
+        if(computer.getLocation(i, j) != null && (computer.getLocation(i, j).getState() || computer.getLocation(i, j).isRevealed())){
+          System.out.print(computer.getLocation(i, j).getID() + " ");
         }else{
           System.out.print(". ");
         }
