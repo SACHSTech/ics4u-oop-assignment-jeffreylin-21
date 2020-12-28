@@ -17,7 +17,7 @@ static BufferedReader keyboard;
     System.out.println("                                        | |");
     System.out.println("                                        |_|");
     System.out.println("Welcone to Battleship");
-    System.out.println("Enter 1 to watch a computer simualated game or 2 to fight a computer");
+    System.out.println("Enter 1 to fight a computer or 2 to watch a computer simualated game");
   }
 
   public static int readInt() throws IOException{
@@ -129,14 +129,14 @@ static BufferedReader keyboard;
     }
   }
 
-  public static String computerAttack(Grid computer){
+  public static String computerAttack(Grid computer, Grid target){
     boolean hasFound = false;
     int rand, randX, randY;
     rand = 0;
     randX = 0;
     randY = 0;
 
-    while(!hasFound){
+    while(!hasFound && computer.getShipNum() != 0){
       rand = random(computer.getShipNum(), 0);
       if(!computer.getActive()[rand].getState()){
         hasFound = true;
@@ -145,9 +145,9 @@ static BufferedReader keyboard;
 
     hasFound = false;
     while(!hasFound){
-      randX = random(computer.getSize(), 1);
-      randY = random(computer.getSize(), 1);
-      if(computer.getLocation(randX, randY) == null || !computer.getLocation(randX, randY).getState()){
+      randX = random(target.getSize(), 1);
+      randY = random(target.getSize(), 1);
+      if(target.getLocation(randX-1, randY-1) == null || !target.getLocation(randX-1, randY-1).getState()){
         hasFound = true;
       }
     }
@@ -174,7 +174,7 @@ static BufferedReader keyboard;
     System.out.println("Setting up both boards...");
     randomBoard(player);
     randomBoard(computer);
-    //sleep(1);
+    sleep(1);
 
     newLine();
     player.printLegend();
@@ -196,7 +196,7 @@ static BufferedReader keyboard;
         intMaxMoves = 0;
       }
 
-      strCommand = computerAttack(computer);
+      strCommand = computerAttack(computer, player);
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
@@ -214,8 +214,67 @@ static BufferedReader keyboard;
     System.out.println("A total of " + Carrier.getShipsFound() + " ships were found and " + Battlecruiser.getPlaneShot() + " planes were shot that round.");
   }
 
-  public static void watchGame(){
+  public static void watchGame() throws IOException{
+    int intMaxMoves;
+    int intChoice;
+    String strCommand;
+    int intShip, intX, intY;
 
+    newLine();
+    System.out.println("Choose your board size, '3', '5', '7', '9'");
+    intChoice = readInt();
+
+    Grid player1 = new Grid(1, intChoice, (intChoice-1)/2);
+    Grid player2 = new Grid(2, intChoice, (intChoice-1)/2);
+    intMaxMoves = intChoice * intChoice;
+
+    newLine();
+    System.out.println("Setting up both boards...");
+    randomBoard(player1);
+    randomBoard(player2);
+    sleep(1);
+
+    newLine();
+    System.out.println("Player 1:");
+    player1.printLegend();
+    player1.printBoard(player2);
+    System.out.println("Player 2:");
+    player2.printLegend();
+    player2.printBoard(player1);
+    while (intMaxMoves > 0 && player1.getShipNum() != 0 && player2.getShipNum() != 0){
+      intMaxMoves--;
+
+      strCommand = computerAttack(player1, player2);
+      intShip = strCommand.charAt(0) - 'A';
+      intX = strCommand.charAt(2) - '0';
+      intY = strCommand.charAt(4) - '0';
+
+      System.out.println("Player 1:");
+      if(intX != -1 && intY != -1){
+        player1.getActive()[intShip].attack(player2, intX-1, intY-1);
+      }else{
+        intMaxMoves = 0;
+      }
+
+      strCommand = computerAttack(player2, player1);
+      intShip = strCommand.charAt(0) - 'A';
+      intX = strCommand.charAt(2) - '0';
+      intY = strCommand.charAt(4) - '0';
+      System.out.println("Player 2:");
+      player2.getActive()[intShip].attack(player1, intX-1, intY-1);
+
+      player1.printBoard(player2);
+      player2.printBoard(player1);
+
+    }
+    if(player1.getShipNum() == 0){
+      System.out.println("Player 2 wins!");
+    }else if(player2.getShipNum() == 0){
+      System.out.println("Player 1 wins!");
+    }else{
+      System.out.println("Draw...");
+    }
+    System.out.println("A total of " + Carrier.getShipsFound() + " ships were found and " + Battlecruiser.getPlaneShot() + " planes were shot that round.");
   }
   
   public static void main (String[] args) throws IOException{
@@ -223,7 +282,7 @@ static BufferedReader keyboard;
     keyboard = new BufferedReader(new InputStreamReader(System.in));
     start();
     intChoice = readInt();
-    if(intChoice == 2){
+    if(intChoice == 1){
       singlePlayer();
     }else{
       watchGame();

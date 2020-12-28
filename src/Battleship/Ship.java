@@ -13,15 +13,10 @@ public class Ship {
     this.chrID = chrID;
 		this.strType = strType;
 		this.intHealth = intHealth;
-    this.intShipSunk = 0;
 		this.isDestroyed = isDestroyed;
     this.isOnFire = false;
 
 	}
-
-  public String toString(){
-    return strType + " sunk " + this.getShipsSunk();
-  }
 
   public char getID(){
     return this.chrID;
