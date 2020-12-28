@@ -54,6 +54,7 @@ public class Grid {
     }
     System.out.println(".: unkwown tile");
     System.out.println("X: Destroyed tile");
+    System.out.println(" : Empty tile");
     Simulator.newLine();
   }
 

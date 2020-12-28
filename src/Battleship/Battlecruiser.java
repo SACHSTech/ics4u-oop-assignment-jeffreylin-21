@@ -58,7 +58,7 @@ public class Battlecruiser extends Ship{
         this.getAmmo().setAmmo();
 
         if(intX >= board.getSize() || intY >= board.getSize() || intX < 0 || intY < 0){
-          System.out.println("Shot missed!");
+          System.out.println("Shot missed!a");
         }else{
           
           if(board.getLocation(intX, intY) != null){

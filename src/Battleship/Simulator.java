@@ -132,24 +132,27 @@ static BufferedReader keyboard;
   public static String computerAttack(Grid computer){
     boolean hasFound = false;
     int rand, randX, randY;
+    rand = 0;
+    randX = 0;
+    randY = 0;
 
     while(!hasFound){
-      rand = random(4, 0);
-      if(!computer.getActive()[intShip].getState()){
+      rand = random(computer.getShipNum(), 0);
+      if(!computer.getActive()[rand].getState()){
         hasFound = true;
       }
     }
 
     hasFound = false;
     while(!hasFound){
-      randX = random(computer.getSize(), 0);
-      randY = random(computer.getSize(), 0);
-      if(computer.getLocation(randX, randY) == null){
+      randX = random(computer.getSize(), 1);
+      randY = random(computer.getSize(), 1);
+      if(computer.getLocation(randX, randY) == null || !computer.getLocation(randX, randY).getState()){
         hasFound = true;
       }
     }
 
-    return Character.toString(rand - 'A') + " " + Integer.toString(randX) + " " + Integer.toString(randY);
+    return Character.toString(rand + 'A') + " " + Integer.toString(randX) + " " + Integer.toString(randY);
 
   }
 
@@ -186,6 +189,7 @@ static BufferedReader keyboard;
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
 
+      System.out.println("You:");
       if(intX != -1 && intY != -1){
         player.getActive()[intShip].attack(computer, intX-1, intY-1);
       }else{
@@ -196,7 +200,8 @@ static BufferedReader keyboard;
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
-      computer.getActive()[intShip].attack(computer, intX-1, intY-1);
+      System.out.println("Enemy:");
+      computer.getActive()[intShip].attack(player, intX-1, intY-1);
 
       player.printBoard(computer);
 
@@ -219,4 +224,4 @@ static BufferedReader keyboard;
       watchGame();
     }
   }
-}
+} 
