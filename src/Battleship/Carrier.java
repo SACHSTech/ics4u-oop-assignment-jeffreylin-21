@@ -57,7 +57,9 @@ public class Carrier extends Ship{
       if(this.getPlane().getName().equals("bomber")){
         for(int intCount = 0; intCount < board.getSize(); intCount++){
           if(board.getLocation(intCount, intY) != null){
+            
             if(!board.getLocation(intCount, intY).getState()){
+              
               System.out.println("Bomb hit a " + board.getLocation(intCount, intY).getType());
               board.getLocation(intCount, intY).setHealth(board);
               board.setGrid(intCount, intY, destroyed);
@@ -96,7 +98,10 @@ public class Carrier extends Ship{
                   }
                 }
               }
+              intCount = 100;
             }
+          }else{
+            board.setGrid(intCount, intY, empty);
           }    
         } 
       }else if(this.getPlane().getScout()){
@@ -105,13 +110,13 @@ public class Carrier extends Ship{
             board.getLocation(intCount, intY).setFire();
           }else{
             board.setGrid(intCount, intY, empty);
-          }
+          }     
 
           if(board.getLocation(intX, intCount) != null){
             board.getLocation(intX, intCount).setFire();
           }else{
             board.setGrid(intX, intCount, empty);
-          }          
+          }     
         }
 
       }

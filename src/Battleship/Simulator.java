@@ -68,8 +68,8 @@ static BufferedReader keyboard;
         }
         if(intCount2 == randX + randSize - 1 && intCount2 != 100){
           randWeapon = random(2, 1);
-          if(randWeapon == 1){
-            Carrier temp = new Carrier((char)(shipNum + 'A'), "Carrier", randSize+1, randSize, false, new Plane("fighter", random(2, 0), false));
+          if(randWeapon == 1 || randWeapon == 2){
+            Carrier temp = new Carrier((char)(shipNum + 'A'), "Carrier", randSize+1, randSize, false, new Plane("bomber", random(2, 0), false));
             board.getActive()[shipNum] = temp;
             shipNum++;       
             for(int intCount3 = randX; intCount3 < randX + randSize; intCount3++){
