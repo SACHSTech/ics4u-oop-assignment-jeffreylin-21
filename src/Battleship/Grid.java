@@ -22,7 +22,7 @@ public class Grid {
     return this.intPlayerNum;
   }
 
-  public int getSize(){
+  public int getSize() {
     return this.intSize;
   }
 
@@ -45,10 +45,11 @@ public class Grid {
     this.grid[intX][intY] = ship;
   }
 
-  public void printLegend(){
+  public void printLegend() {
+
     System.out.println("Legend: ");
-    for(int i = 0; i < this.getShipNum(); i++){
-      if(!this.getActive()[i].getState()){
+    for (int i = 0; i < this.getShipNum(); i++) {
+      if (!this.getActive()[i].getState()) {
         System.out.println(this.getActive()[i]);
       }
     }
@@ -56,47 +57,53 @@ public class Grid {
     System.out.println("X: Destroyed tile");
     System.out.println(" : Empty tile");
     Simulator.newLine();
+
   }
 
-  public void printBoard(Grid computer){
+  public void printBoard(Grid computer) {
     
-    for(int intCount = 0; intCount < this.getSize()*2-5; intCount++){
+    for (int intCount = 0; intCount < this.getSize() * 2 - 5; intCount++) {
       System.out.print(" ");
     }
     System.out.println("Player | Enemy");
 
-    for(int i = 0; i <= this.getSize(); i++){
+    for (int i = 0; i <= this.getSize(); i++) {
       System.out.print(i + " ");
     }
+
     System.out.print("| ");
-    for(int i = this.getSize(); i >= 0; i--){
+    for (int i = this.getSize(); i >= 0; i--) {
       System.out.print(i + " ");
     }    
 
     Simulator.newLine();
 
-    for(int i = 0; i < this.getSize(); i++){
-      System.out.print((i+1) + " ");
+    for (int i = 0; i < this.getSize(); i++) {
+      
+      System.out.print((i + 1) + " ");
+      for (int j = 0; j < this.getSize(); j++) {
 
-      for(int j = 0; j < this.getSize(); j++){
-
-        if(this.getLocation(i, j) == null){
+        if (this.getLocation(i, j) == null) {
           System.out.print(". ");
-          
-        }else{
+        }
+        else {
           System.out.print(this.getLocation(i, j).getID() + " ");
         }
+
       }
+
       System.out.print("| ");
-      for(int j = computer.getSize()-1; j > -1 ; j--){
-        if(computer.getLocation(i, j) != null && (computer.getLocation(i, j).getState() || computer.getLocation(i, j).isRevealed())){
+      for (int j = computer.getSize() - 1; j > -1 ; j--) {
+
+        if (computer.getLocation(i, j) != null && (computer.getLocation(i, j).getState() || computer.getLocation(i, j).isRevealed())) {
           System.out.print(computer.getLocation(i, j).getID() + " ");
-        }else{
+        }
+        else {
           System.out.print(". ");
         }
 
       }
-      System.out.println((i+1) + " ");
+      System.out.println((i + 1) + " ");
       
     }
     Simulator.newLine();

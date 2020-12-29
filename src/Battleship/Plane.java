@@ -12,15 +12,15 @@ public class Plane {
     this.isScout = isScout;
 	}
 
-  public int getSpread(){
+  public int getSpread() {
     return this.intBombSpread;
   }
 	
-  public boolean getScout(){
+  public boolean getScout() {
     return this.isScout;
   }
 
-  public String getName(){
+  public String getName() {
     return this.strPlaneName;
   }
 }

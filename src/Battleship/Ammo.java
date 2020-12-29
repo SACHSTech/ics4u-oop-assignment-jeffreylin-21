@@ -14,23 +14,23 @@ public class Ammo {
 		this.isExplosive = isExplosive;
 	}
 	  
-  public int getGunSpread(){
+  public int getGunSpread() {
     return this.intGunSpread;
   }
 	
-  public boolean getExplosive(){
+  public boolean getExplosive() {
     return this.isExplosive;
   }
 
-  public String getAmmoType(){
+  public String getAmmoType() {
     return this.strAmmoName;
   }
 
-  public int getQuantity(){
+  public int getQuantity() {
     return this.intAmmoQuantity;
   }
 
-  public void setAmmo(){
+  public void setAmmo() {
     this.intAmmoQuantity--;
   }
 

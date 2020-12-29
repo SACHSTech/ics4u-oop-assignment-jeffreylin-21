@@ -18,11 +18,11 @@ public class Ship {
 
 	}
 
-  public char getID(){
+  public char getID() {
     return this.chrID;
   }
 
-  public String getType(){
+  public String getType() {
     return this.strType;
   }
 
@@ -43,19 +43,19 @@ public class Ship {
     this.isDestroyed = true;
   }
 
-  public boolean getState(){
+  public boolean getState() {
     return this.isDestroyed;
   }
 
-  public boolean isRevealed(){
+  public boolean isRevealed() {
     return this.isOnFire;
   }
 
-  public void setFire(){
+  public void setFire() {
     this.isOnFire = true;
   }
 
-  public void attack(Grid board, int intX, int intY){
+  public void attack(Grid board, int intX, int intY) {
     System.out.println("Attacked");
   }
 
