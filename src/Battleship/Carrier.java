@@ -225,10 +225,14 @@ public class Carrier extends Ship{
         for (int intCount = 0; intCount < board.getSize(); intCount++) {
           
           // Check the coloumn of the target
-          if (board.getLocation(intCount, intY) != null) {
+          if (board.getLocation(intCount, intY) != null && !board.getLocation(intCount, intY).getState()) {
+            
+            // Check if ship was already found
+            if (!board.getLocation(intCount, intY).isRevealed()) {
+              board.getLocation(intCount, intY).setFire();
+              setShipsFound();
+            }
 
-            board.getLocation(intCount, intY).setFire();
-            setShipsFound();
             intRand = Simulator.random(10, 1);
             // If the ship found is a battlecruiser, then the plane may be shot down
             if (intRand == 1 && board.getLocation(intCount, intY).getType().equals("Battlecruiser")) {
@@ -239,15 +243,19 @@ public class Carrier extends Ship{
 
           }
           // If spot is null, fill it with an empty ship
-          else {
+          else if (board.getLocation(intCount, intY) == null) {
             board.setGrid(intCount, intY, empty);
           }     
 
           // Check the row of the target
-          if (board.getLocation(intX, intCount) != null) {
+          if (board.getLocation(intX, intCount) != null && !board.getLocation(intX, intCount).getState()) {
 
-            board.getLocation(intX, intCount).setFire();
-            setShipsFound();
+            // Check if ship was already found
+            if (!board.getLocation(intX, intCount).isRevealed()) {
+              board.getLocation(intX, intCount).setFire();
+              setShipsFound();
+            }
+
             intRand = Simulator.random(10, 1);
             // If the ship found is a battlecruiser, then the plane may be shot down
             if (intRand == 1 && board.getLocation(intX, intCount).getType().equals("Battlecruiser")) {
@@ -257,7 +265,7 @@ public class Carrier extends Ship{
             }
           }
           // If spot is null, fill it with an empty ship
-          else {
+          else if (board.getLocation(intX, intCount) == null) {
             board.setGrid(intX, intCount, empty);
           }     
         }
