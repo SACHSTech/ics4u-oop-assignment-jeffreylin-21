@@ -16,7 +16,10 @@ static BufferedReader keyboard;
     System.out.println("\\____/ \\__,_|\\__|\\__|_|\\___||___/_| |_|_| .__/");
     System.out.println("                                        | |");
     System.out.println("                                        |_|");
-    System.out.println("Welcone to Battleship");
+    System.out.println("Welcone to Battleship, here are the instructions:");
+    newLine();
+    System.out.println("You can either watch two bots play against each other or play against a bot yourself. Each board size correlates with a different number of ships. The type and location of each shuip will be random. The two different ship types are a battlecruiser and a carrier. The battlecruiser can have either an explosive shell or a mortar shell. The explosive shell will reveal the entire ship if part of the ship is hit. The mortar shell will target an entire area, the range of this area depends on your luck. There are two plane types for a carrier a scout and a bomber. A scout plane will search the row and coloumn of the target you select for ships and the bomber will search the coloumn in your target until it finds a ship. Lastly, there is a limited number of ammo and planes, so if planes are shot down or ammo runs out, you may be out of luck.");
+    newLine();
     System.out.println("Enter 1 to fight a computer or 2 to watch a computer simualated game");
   }
 
