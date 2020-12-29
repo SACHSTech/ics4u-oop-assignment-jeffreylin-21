@@ -1,5 +1,11 @@
 package Battleship;
 
+/**
+* ICS4U OOP Assignment
+* @author: J. Lin
+*
+*/
+
 public class Ship {
 	
 	private String strType;

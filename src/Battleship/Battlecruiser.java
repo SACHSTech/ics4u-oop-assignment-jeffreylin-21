@@ -1,5 +1,11 @@
 package Battleship;
 
+/**
+* ICS4U OOP Assignment
+* @author: J. Lin
+*
+*/
+
 public class Battlecruiser extends Ship {
 	
 	private Ammo ammoType;

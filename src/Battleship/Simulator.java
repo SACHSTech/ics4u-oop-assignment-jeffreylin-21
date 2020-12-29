@@ -1,5 +1,11 @@
 package Battleship;
 
+/**
+* ICS4U OOP Assignment
+* @author: J. Lin
+*
+*/
+
 import java.io.*;
 import java.util.concurrent.TimeUnit;
 

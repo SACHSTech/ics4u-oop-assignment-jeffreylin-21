@@ -1,5 +1,11 @@
 package Battleship;
 
+/**
+* ICS4U OOP Assignment
+* @author: J. Lin
+*
+*/
+
 public class Carrier extends Ship{
 	
 	private Plane planeType;
@@ -7,7 +13,7 @@ public class Carrier extends Ship{
 	private int intWidth;
   private static int intShipsFound = 0;
 	
-	public Carrier (char chrID, String strType, int intNumPlanes, int intWidth, boolean isDestroyed,Plane planeType) {
+	public Carrier (char chrID, String strType, int intNumPlanes, int intWidth, boolean isDestroyed, Plane planeType) {
     
     super(chrID, strType, intWidth * 2, isDestroyed);
 		this.planeType = planeType;
