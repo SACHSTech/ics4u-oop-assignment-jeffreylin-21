@@ -73,7 +73,6 @@ public class Grid {
 
   /**
   * Takes the current number of active ships and decreases it by 1
-  *
   */  
   public void setShipNum() {
     this.intShipNum--;
@@ -86,7 +85,6 @@ public class Grid {
   * @param intY - the second value of the index in the 2-d ship array
   *
   * @return Ship, the ship object that is in the index specified
-  *
   */ 
   public Ship getLocation(int intX, int intY) {
     return this.grid[intX][intY];
@@ -98,7 +96,6 @@ public class Grid {
   * @param intX - the first value of the index in the 2-d ship array
   * @param intY - the second value of the index in the 2-d ship array
   * @param ship - the ship that the index will be set equal to
-  *
   */ 
   public void setGrid(int intX, int intY, Ship ship) {
     this.grid[intX][intY] = ship;
@@ -106,7 +103,6 @@ public class Grid {
 
   /**
   * Goes through the board displayed to the userand prints what each character on their board represents
-  *
   */ 
   public void printLegend() {
 
@@ -127,7 +123,6 @@ public class Grid {
   * Prints the Ship[][] array and the oppnonents array beside it
   *
   * @param computer - the enemy board that will be printed
-  *
   */
   public void printBoard(Grid computer) {
     

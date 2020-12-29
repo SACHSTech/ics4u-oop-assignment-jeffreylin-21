@@ -70,7 +70,6 @@ public class Carrier extends Ship{
 
   /**
   * Takes the current amount of planes held by this carrier and decrements it by 1
-  *
   */
   public void setPlanes() {
     this.intNumPlanes--;
