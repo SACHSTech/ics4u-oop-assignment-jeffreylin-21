@@ -8,6 +8,7 @@ package Battleship;
 
 public class Ammo {
 	
+  // Instance variables
 	private String strName;
 	private int intSpread;
   private int intQuantity;

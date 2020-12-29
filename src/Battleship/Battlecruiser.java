@@ -8,6 +8,7 @@ package Battleship;
 
 public class Battlecruiser extends Ship {
 	
+  // Instance variables
 	private Ammo ammoType;
 	private boolean isJammed;
 	private int intLength;
@@ -15,12 +16,13 @@ public class Battlecruiser extends Ship {
   private static int intPlanesShot = 0;
 
   /**
-  * Constructor - creates new instance of an Ammo object
+  * Constructor - creates new instance of an battlecruiser object
   *
   * @param chrID - the character that will represent this object on the grid
+  * @param strType - the type of ship this is
   * @param intLength - the length of this battlecruiser (width is auto set to 1)
   * @param isDestroyed - if this battlecruiser is destoyed 
-  * @param ammoType - the ammo type of this battlecruiser
+  * @param ammoType - the ammo object of this battlecruiser
   */		
 	public Battlecruiser (char chrID, String strType, int intLength, boolean isDestroyed, Ammo ammoType) {
 
@@ -103,7 +105,7 @@ public class Battlecruiser extends Ship {
   *
   * @param board - the Grid of the other player which will be shot
   * @param intX - the int value of the x coordinate of the target
-  * @param intY - the int value of the y coordinate of the object
+  * @param intY - the int value of the y coordinate of the target
   */
   public void attack(Grid board, int intX, int intY) {
 
@@ -149,7 +151,7 @@ public class Battlecruiser extends Ship {
             // If the ammo name is mortar, then also attack north, east, south, and west of the target with distance equal to the range of the ammo
             for (int intCount = 1; intCount < this.getAmmo().getGunSpread(); intCount++) {
               
-              // Check if going south the target will be out of bounds
+              // Check if going south of the target will be out of bounds
               if (intX + intCount < board.getSize()) {
                 
                 // Check if there is ship in the new target
@@ -165,7 +167,7 @@ public class Battlecruiser extends Ship {
                 }
 
               }
-              // Check if going north the target will be out of bounds
+              // Check if going north of the target will be out of bounds
               if (intX - intCount > -1) {
                 
                 // Check if there is a ship in the new target
@@ -181,7 +183,7 @@ public class Battlecruiser extends Ship {
                 }
 
               }
-              // Check if going west the target will be out of bounds, board is inverted so increasing the value will go west not east
+              // Check if going west of the target will be out of bounds, board is inverted so increasing the value will go west not east
               if (intY + intCount < board.getSize()) {
                 
                 // Check if there is a ship int he new target
@@ -197,7 +199,7 @@ public class Battlecruiser extends Ship {
                 }
 
               }
-              // Check if going east the target will be out of bounds 
+              // Check if going east of the target will be out of bounds 
               if (intY - intCount > -1) {
 
                 // Check if there is a ship in the new target
@@ -221,12 +223,14 @@ public class Battlecruiser extends Ship {
         }
 
       } 
+      // If shot cannot be fired, print out the reason why
       else if (this.getStatus()) {
         System.out.println("Gun jammed!");
       } 
       else {
         System.out.println("Out of ammo");
       }
+      // Randomly set if gun gets jammed for the next shot
       this.setStatus();
   }
 }
