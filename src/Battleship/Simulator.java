@@ -9,11 +9,11 @@ static BufferedReader keyboard;
 
   public static void start() {
     System.out.println("______       _   _   _           _     _");
-    System.out.println("| ___ \"    | | | | | |         | |   (_)");
+    System.out.println("| ___ \\     | | | | | |         | |   (_)");
     System.out.println("| |_/ / __ _| |_| |_| | ___  ___| |__  _ _ __");
-    System.out.println("| ___ \"/ _` | __| __| |/ _ \"/ __| '_ \"| | '_ \"");
-    System.out.println("| |_/ / (_| | |_| |_| |  __/\"__ \" | | | | |_) |");
-    System.out.println("\"____/ \"__,_|\"__|\"__|_|\"___||___/_| |_|_| .__/");
+    System.out.println("| ___ \\/ _` | __| __| |/ _ \\/ __| '_ \\| | '_ \\");
+    System.out.println("| |_/ / (_| | |_| |_| |  __/\\__ \\ | | | | |_) |");
+    System.out.println("\\____/ \\__,_|\\__|\\__|_|\\___||___/_| |_|_| .__/");
     System.out.println("                                        | |");
     System.out.println("                                        |_|");
     System.out.println("Welcone to Battleship");
