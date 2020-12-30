@@ -67,7 +67,6 @@ public class Ammo {
 
   /**
   * Takes the current amount of ammo in this obect and decrement it by 1 
-  *
   */
   public void setAmmo() {
     this.intQuantity--;

@@ -1,10 +1,13 @@
 [![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=3826836&assignment_repo_type=AssignmentRepo)
 # ICS4U OOP Assignment
 
-[*see instructions for details*](Instructions.md)
-
 <img src="https://github.com/SACHSTech/ics4u-oop-assignment-jeffreylin-21/blob/main/src/Class%20Diagram.png">
 
 
 ## Summary
-*Include a brief summary that describes your system that your are modelling*
+The system that is being modelled is a version of the Battleship board game. In the original board game, two players take turns launching attacks on each other's boards; attempting to guess where the other player placed their ships. This version of Battleship takes it up a notch by introducing different ships and weapons into the game. To start, the relationships between each class will be described. We first start with a grid object, where the ships will be held. The most important property of the board object is that it has a 2-d ship array, holding all the ships. As the name suggests, this is a has-a relationship or agrregation. Next, each ship on the board can be further divided into two classes of ships, a carrier and a battlecruiser. This is a is-a relationship as a battlecruiser is a ship and a carrier is a ship. All battlecruiser and carriers are ships, but not all ships are battlecruiser and carriers. This means that battlecruisers and carriers have similar properties, but also have different properties, which warrant them having their own two distinct classes. Lastly, each ship will have their own unique weapon object. A battlecruiser will have an ammo object, representing the type of ammo it is carrying and the carrier will have a plane object, representing the plane it is housing. Similar to before, this is a has-a relationship or aggregation. 
+
+## Instructions: 
+These are in the program, but a little hard to read. 
+
+When you run the Simulator class, you will be presented with either watching a game between bots or playing one yourself. You will also be prompted to selecting a board size. Size 3 has 1 ship, 5 has 2, 7 has 3, and 9 has 4. The type and location of each ship will be random. The two different ship types are a battlecruiser and a carrier. The battlecruiser can have either an explosive shell or a mortar shell. The explosive shell will reveal the entire ship if part of the enemy ship is hit. The mortar shell will target an entire area, the range of this area depends on your luck and will not be told to the user. There are two plane types for a carrier, a scout and a bomber. A scout plane will search the row and coloumn of the target you select for ships. The bomber will search the coloumn of your target until it finds a ship. Lastly, there is a limited number of ammo and planes, so if planes are shot down or ammo runs out, you can enter -1 -1 as a coordinate to quit the game. 
