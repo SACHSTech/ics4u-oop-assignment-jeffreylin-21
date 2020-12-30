@@ -232,7 +232,7 @@ public class Carrier extends Ship{
               setShipsFound();
             }
 
-            intRand = Simulator.random(10, 1);
+            intRand = (int)(Math.random() * 10 + 1);
             // If the ship found is a battlecruiser, then the plane may be shot down
             if (intRand == 1 && board.getLocation(intCount, intY).getType().equals("Battlecruiser")) {
               System.out.println("Plane was shot down");
@@ -255,7 +255,7 @@ public class Carrier extends Ship{
               setShipsFound();
             }
 
-            intRand = Simulator.random(10, 1);
+            intRand = (int)(Math.random() * 10 + 1);
             // If the ship found is a battlecruiser, then the plane may be shot down
             if (intRand == 1 && board.getLocation(intX, intCount).getType().equals("Battlecruiser")) {
               System.out.println("Plane was shot down");

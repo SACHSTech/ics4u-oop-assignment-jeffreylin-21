@@ -43,18 +43,6 @@ public class Simulator {
   }
 
   /**
-  * Takes a string from the user and returns it as an int
-  *
-  * @param intRange - the range of the random number to be generated
-  * @param intStart - the starting value of the random number to be generated 
-  *
-  * @return int of randomly generated number
-  */
-  public static int random(int intRange, int intStart) {
-    return (int)(Math.random() * intRange + intStart);
-  }
-
-  /**
   * Prints out blank line
   */
   public static void newLine() {
@@ -75,177 +63,6 @@ public class Simulator {
         System.out.println(e);
     } 
     
-  }
-
-  /**
-  * Takes in a board and randomly fills it according to its size
-  *
-  * @param board - the board that is being filled
-  */
-  public static void randomBoard(Grid board) {
-    
-    // Variable initialization
-    int randX;
-    int randY;
-    int randSize;
-    int randWeapon;
-    int intCarriers;
-    int intCruisers;
-    int shipNum;
-    Carrier temp;
-    Battlecruiser temp2;
-    shipNum = 0;
-
-    // Randomly generate an amount of carriers and make the rest of the ships cruisers
-    intCarriers = random(board.getShipNum(), 0);
-    intCruisers = board.getShipNum()-intCarriers;
-
-    // Create carriers and place them on the grid
-    while (intCarriers > 0) {
-
-      intCarriers--;
-      // generate random size and location
-      randSize = random(3, 1);
-      randX = random(board.getSize() - randSize, 0);
-      randY = random(board.getSize() - 2, 0);
-
-      // Go through the generated location and make sure it is valid, i.e no other ship is already there
-      for (int intCount2 = randX; intCount2 < randX + randSize; intCount2++) {
-        for (int intCount = randY; intCount < randY + 2; intCount++) {
-          
-          // If there is a ship already there, exit this loop and regenerate a new carrier and location
-          if (board.getLocation(intCount2, intCount) != null) {
-            intCount = 100;
-            intCount2 = 100;
-            intCarriers++;
-          }
-
-        }
-        if (intCount2 == randX + randSize - 1 && intCount2 != 100) {
-          
-          // Generate a random weapon
-          randWeapon = random(2, 1);
-          if (randWeapon == 1) {
-            // Instantiate carrier
-            temp = new Carrier((char)(shipNum + 'A'), "Carrier", randSize+1, randSize, false, new Plane("bomber", random(2, 0), false));
-            board.getActive()[shipNum] = temp;
-            shipNum++;    
-          }
-          else {
-            // Instantiate carrier
-            temp = new Carrier((char)(shipNum + 'A'), "Carrier", randSize + 1, randSize, false, new Plane("scout", 0, true));
-            board.getActive()[shipNum] = temp;
-            shipNum++;
-
-          }
-          // Place on board
-          for (int intCount3 = randX; intCount3 < randX + randSize; intCount3++) {
-            for (int intCount4 = randY; intCount4 < randY + 2; intCount4++) {
-              board.setGrid(intCount3, intCount4, temp);
-            }
-          }
-        }
-
-      }
-    }
-
-    // Create cruisers and place them on the grid
-    while (intCruisers > 0) {
-
-      // generate random size and location
-      intCruisers--;
-      randSize = random(2, 2);
-      randX = random(board.getSize() - randSize, 0);
-      randY = random(board.getSize() - 1, 0);
-
-      // Go through the generated location and make sure it is valid, i.e no other ship is already there
-      for (int intCount2 = randX; intCount2 < randX + randSize; intCount2++) {
-        for (int intCount = randY; intCount < randY + 1; intCount++) {
-          
-          // If there is a ship already there, exit this loop and regenerate a new cruiser and location
-          if (board.getLocation(intCount2, intCount) != null) {
-            intCount = 100;
-            intCount2 = 100;
-            intCruisers++;
-          }
-
-        }
-
-        if (intCount2 == randX + randSize - 1 && intCount2 != 100) {
-          
-          // Generate a random weapon
-          randWeapon = random(2, 1);
-          if (randWeapon == 1) {
-            
-            // Instantiate battlecruiser
-            temp2 = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("explosive", 0, 10, true));
-            board.getActive()[shipNum] = temp2;
-            shipNum++; 
-
-          }
-          else {
-            // Instantiate battlecruiser
-            temp2 = new Battlecruiser((char)(shipNum + 'A'), "Battlecruiser", randSize, false, new Ammo("mortar", random(3, 2), 10, false));
-            board.getActive()[shipNum] = temp2;
-            shipNum++;
-          }
-
-          // Place on grid
-          for (int intCount3 = randX; intCount3 < randX + randSize; intCount3++) {
-            for (int intCount4 = randY; intCount4 < randY + 1; intCount4++) {
-                board.setGrid(intCount3, intCount4, temp2);
-            }
-          }
-
-        }
-
-      }
-
-    }
-  }
-
-  /**
-  * Takes a the grid the computer is attacking from and chooses a random ship and shoots a random target on the enemy board
-  *
-  * @param computer - the grid that the computer is attacking from
-  * @param target - the grid the computer must attack
-  *
-  * @return String of the attacking ship and coordinates of attack 
-  */  
-  public static String computerAttack(Grid computer, Grid target) {
-
-    // variable initialization
-    boolean hasFound;
-    int rand, randX, randY;
-    rand = 0;
-    randX = 0;
-    randY = 0;
-    hasFound = false;
-
-    // Pick a random ship from the available ships
-    while (!hasFound && computer.getShipNum() > 0) {
-      
-      // Keep generating a random number and check the corresponding element of the Ship[] array until an alive ship is found
-      rand = random(computer.getActive().length, 0);
-      if (!computer.getActive()[rand].getState()) {
-        hasFound = true;
-      }
-
-    }
-
-    // Keep generating random coordinates until a spot that is not attacked yet is found
-    hasFound = false;
-    while (!hasFound) {
-      randX = random(target.getSize(), 1);
-      randY = random(target.getSize(), 1);
-      if (target.getLocation(randX - 1, randY - 1) == null || !target.getLocation(randX - 1, randY - 1).getState()) {
-        hasFound = true;
-      }
-    }
-
-    // return the ship chrID as a number by changing it to its corresponding position in the alphabet, and return coordinates of the target seperated by a space
-    return Character.toString(rand + 'A') + " " + Integer.toString(randX) + " " + Integer.toString(randY);
-
   }
 
   /**
@@ -272,8 +89,8 @@ public class Simulator {
     // generate random boards
     newLine();
     System.out.println("Setting up both boards...");
-    randomBoard(player);
-    randomBoard(computer);
+    player.randomBoard();
+    computer.randomBoard();
     sleep(1);
 
     // Print legend and board to player
@@ -310,7 +127,7 @@ public class Simulator {
       }
 
       // Get random ship and attack target for the computer
-      strCommand = computerAttack(computer, player);
+      strCommand = computer.generateAttack(player);
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
@@ -357,8 +174,8 @@ public class Simulator {
 
     newLine();
     System.out.println("Setting up both boards...");
-    randomBoard(player1);
-    randomBoard(player2);
+    player1.randomBoard();
+    player2.randomBoard();
     sleep(1);
 
     // Print out both player's grid and legend
@@ -375,7 +192,7 @@ public class Simulator {
       intMaxMoves--;
       System.out.println("--------------------------------------------");
       // Get ship and target for the first player
-      strCommand = computerAttack(player1, player2);
+      strCommand = player1.generateAttack(player2);
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
@@ -387,7 +204,7 @@ public class Simulator {
       }
 
       // Get attack for second player
-      strCommand = computerAttack(player2, player1);
+      strCommand = player2.generateAttack(player1);
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
       intY = strCommand.charAt(4) - '0';
