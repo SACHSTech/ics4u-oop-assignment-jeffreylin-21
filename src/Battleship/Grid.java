@@ -192,7 +192,7 @@ public class Grid {
   *
   * @return int of randomly generated number
   */
-  public static int random(int intRange, int intStart) {
+  private static int random(int intRange, int intStart) {
     return (int)(Math.random() * intRange + intStart);
   }
 

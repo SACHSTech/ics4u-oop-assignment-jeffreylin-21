@@ -17,7 +17,7 @@ public class Simulator {
   /**
   * Prints starting messages, logo, instructions, and asks for game mode
   */
-  public static void start() {
+  private static void start() {
     System.out.println("______       _   _   _           _     _");
     System.out.println("| ___ \\     | | | | | |         | |   (_)");
     System.out.println("| |_/ / __ _| |_| |_| | ___  ___| |__  _ _ __");
@@ -38,14 +38,14 @@ public class Simulator {
   *
   * @return int of whatever was entered by the user
   */
-  public static int readInt() throws IOException {
+  private static int readInt() throws IOException {
     return Integer.parseInt(keyboard.readLine());
   }
 
   /**
   * Prints out blank line
   */
-  public static void newLine() {
+  private static void newLine() {
     System.out.println();
   }
 
@@ -54,7 +54,7 @@ public class Simulator {
   *
   * @param intSec - the amount of seconds for the program to sleep in int
   */
-  public static void sleep(int intSec) {
+  private static void sleep(int intSec) {
 
     try { 
       TimeUnit.SECONDS.sleep(intSec);
@@ -68,7 +68,7 @@ public class Simulator {
   /**
   * Simulates a game of the user versus the computer
   */  
-  public static void singlePlayer() throws IOException {
+  private static void singlePlayer() throws IOException {
 
     // Variable initialization
     int intMaxMoves;
@@ -154,7 +154,7 @@ public class Simulator {
   /**
   * Simulates a game of between two computer controlled players
   */  
-  public static void watchGame() throws IOException {
+  private static void watchGame() throws IOException {
 
     // Variable initialization
     int intMaxMoves;
