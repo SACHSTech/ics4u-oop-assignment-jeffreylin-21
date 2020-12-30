@@ -115,7 +115,7 @@ public class Grid {
     System.out.println(".: unkwown tile");
     System.out.println("X: Destroyed tile");
     System.out.println(" : Empty tile");
-    Simulator.newLine();
+    System.out.println();
 
   }
 
@@ -142,7 +142,7 @@ public class Grid {
       System.out.print(i + " ");
     }    
 
-    Simulator.newLine();
+    System.out.println();
 
     // Iterate through the array and print out the charID of each ship object
     for (int i = 0; i < this.getSize(); i++) {
@@ -181,7 +181,7 @@ public class Grid {
       System.out.println((i + 1) + " ");
       
     }
-    Simulator.newLine();
+    System.out.println();
   }
 
 }

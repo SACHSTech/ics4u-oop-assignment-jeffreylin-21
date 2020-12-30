@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Simulator {
 
-// static BufferedReader so all methods can access it
-static BufferedReader keyboard;
+  // static BufferedReader so all methods can access it
+  static BufferedReader keyboard;
 
   /**
   * Prints starting messages, logo, instructions, and asks for game mode
