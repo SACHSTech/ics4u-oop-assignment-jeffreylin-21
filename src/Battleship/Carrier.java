@@ -228,7 +228,7 @@ public class Carrier extends Ship{
             
             // Check if ship was already found
             if (!board.getLocation(intCount, intY).isRevealed()) {
-              board.getLocation(intCount, intY).setFire();
+              board.getLocation(intCount, intY).setDiscovered();
               setShipsFound();
             }
 
@@ -251,7 +251,7 @@ public class Carrier extends Ship{
 
             // Check if ship was already found
             if (!board.getLocation(intX, intCount).isRevealed()) {
-              board.getLocation(intX, intCount).setFire();
+              board.getLocation(intX, intCount).setDiscovered();
               setShipsFound();
             }
 

@@ -53,7 +53,6 @@ public class Battlecruiser extends Ship {
   
   /**
   * Takes the static variable intPlanesShot and increments it by 1
-  *
   */	  
   public static void setPlaneShot() {
     intPlanesShot++;
@@ -131,7 +130,7 @@ public class Battlecruiser extends Ship {
             board.getLocation(intX, intY).setHealth(board);
             if (this.getAmmo().getExplosive()) {
               // If the ammo was explosive, set the ship on fire/reveal the ship to both players
-              board.getLocation(intX, intY).setFire();
+              board.getLocation(intX, intY).setDiscovered();
             }
             board.setGrid(intX, intY, destroyed);
 
