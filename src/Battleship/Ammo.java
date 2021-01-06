@@ -1,9 +1,9 @@
 package Battleship;
 
 /**
-* ICS4U OOP Assignment
+* Ammo class file
 * @author: J. Lin
-*
+* 
 */
 
 public class Ammo {

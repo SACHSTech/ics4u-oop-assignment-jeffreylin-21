@@ -1,9 +1,9 @@
 package Battleship;
 
 /**
-* ICS4U OOP Assignment
+* Ship class file
 * @author: J. Lin
-*
+* 
 */
 
 public class Ship {

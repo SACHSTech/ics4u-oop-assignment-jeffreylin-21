@@ -1,9 +1,9 @@
 package Battleship;
 
 /**
-* ICS4U OOP Assignment
+* Grid class file
 * @author: J. Lin
-*
+* 
 */
 
 public class Grid {

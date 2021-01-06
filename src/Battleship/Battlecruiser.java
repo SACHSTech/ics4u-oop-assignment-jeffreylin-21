@@ -1,9 +1,9 @@
 package Battleship;
 
 /**
-* ICS4U OOP Assignment
+* Battlecruiser class file
 * @author: J. Lin
-*
+* 
 */
 
 public class Battlecruiser extends Ship {

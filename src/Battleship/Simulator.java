@@ -1,9 +1,9 @@
 package Battleship;
 
 /**
-* ICS4U OOP Assignment
+* Simulator class file
 * @author: J. Lin
-*
+* 
 */
 
 import java.io.*;
