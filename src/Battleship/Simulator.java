@@ -97,7 +97,7 @@ public class Simulator {
     newLine();
     player.printLegend();
     player.printBoard(computer);
-    System.out.println("Enter 0 0 as a coordinate to quit");
+    System.out.println("Enter 0 0 as a coordinate to quit, 'A 0 0'");
 
     // while the max number of moves has not been reached and both players still have ships alive, continue the game
     while (intMaxMoves > 0 && player.getShipNum() != 0 && computer.getShipNum() != 0) {
@@ -246,7 +246,7 @@ public class Simulator {
     intChoice = readInt();
 
     // Starts the appropriate game modes
-    if(intChoice == 1) {
+    if (intChoice == 1) {
       singlePlayer();
     }
     else {
