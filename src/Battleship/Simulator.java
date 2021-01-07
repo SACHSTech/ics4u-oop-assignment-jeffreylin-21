@@ -97,7 +97,7 @@ public class Simulator {
     newLine();
     player.printLegend();
     player.printBoard(computer);
-    System.out.println("Enter -1 -1 as a coordinate to quit");
+    System.out.println("Enter 0 0 as a coordinate to quit");
 
     // while the max number of moves has not been reached and both players still have ships alive, continue the game
     while (intMaxMoves > 0 && player.getShipNum() != 0 && computer.getShipNum() != 0) {
@@ -111,7 +111,7 @@ public class Simulator {
       intY = strCommand.charAt(4) - '0';
 
       System.out.println("You:");
-      if (intX != -1 && intY != -1) {
+      if (intX != 0 && intY != 0) {
         // If ship is available to attack, the ship attacks
         if (!player.getActive()[intShip].getState()) {
           player.getActive()[intShip].attack(computer, intX - 1, intY - 1);
@@ -121,7 +121,7 @@ public class Simulator {
         }
 
       }
-      // If coordinates -1 -1 are entered the game is ended
+      // If coordinates 0 0 are entered the game is ended
       else {
         intMaxMoves = 0;
       }
