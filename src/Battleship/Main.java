@@ -1,7 +1,7 @@
 package Battleship;
 
 /**
-* Simulator class file
+* Main class file, simulates system
 * @author: J. Lin
 * 
 */
@@ -9,7 +9,7 @@ package Battleship;
 import java.io.*;
 import java.util.concurrent.TimeUnit;
 
-public class Simulator {
+public class Main {
 
   // static BufferedReader so all methods can access it
   static BufferedReader keyboard;
