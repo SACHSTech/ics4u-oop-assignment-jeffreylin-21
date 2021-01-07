@@ -104,7 +104,7 @@ public class Main {
       intMaxMoves--;
 
       // Get ship and attack target from user
-      System.out.println("Choose ship to attack, row of target, and coloumn of target, e.g 'A 3 4'");
+      System.out.println("Choose ship to attack, row of target, and coloumn of target with a space inbetween each character, e.g 'A 3 4'");
       strCommand = keyboard.readLine();
       intShip = strCommand.charAt(0) - 'A';
       intX = strCommand.charAt(2) - '0';
